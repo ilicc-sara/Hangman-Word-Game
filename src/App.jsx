@@ -25,376 +25,49 @@ function App() {
                  {name: "Arrested Development", selected: false,}, {name: "Succession", selected: false,}, {name: "Fargo", selected: false,}, 
                  {name: "Mad Men", selected: false,}, {name: "The West Wing", selected: false,}, {name: "Dexter", selected: false,}, 
                  {name: "Rick and Morty", selected: false,}, {name: "Lost", selected: false,}, {name: "Doctor Who", selected: false,}, 
-                 {name: "The Walking Dead", selected: false,}, {name: "Peaky Blinders", selected: false,}, {name: "Buffy the Vampire Slayer", selected: false,}, 
-                 {name: "The Big Bang Theory", selected: false,}, {name: "Curb Your Enthusiasm", selected: false,}, {name: "Ted Lasso", selected: false,},
-                 {name: "True Detective", selected: false,}, 
+                 {name: "The Walking Dead", selected: false,}, {name: "Peaky Blinders", selected: false,}, 
+                 {name: "Buffy the Vampire Slayer", selected: false,}, {name: "The Big Bang Theory", selected: false,}, 
+                 {name: "Curb Your Enthusiasm", selected: false,}, {name: "Ted Lasso", selected: false,}, {name: "True Detective", selected: false,}, 
                 ],
-    Countries: [
-      {
-        name: "Australia",
-        selected: false,
-      },
-      {
-        name: "Brazil",
-        selected: false,
-      },
-      {
-        name: "Canada",
-        selected: false,
-      },
-      {
-        name: "Denmark",
-        selected: false,
-      },
-      {
-        name: "Egypt",
-        selected: false,
-      },
-      {
-        name: "France",
-        selected: false,
-      },
-      {
-        name: "Germany",
-        selected: false,
-      },
-      {
-        name: "Hungary",
-        selected: false,
-      },
-      {
-        name: "India",
-        selected: false,
-      },
-      {
-        name: "Japan",
-        selected: false,
-      },
-      {
-        name: "Kenya",
-        selected: false,
-      },
-      {
-        name: "Luxembourg",
-        selected: false,
-      },
-      {
-        name: "Mexico",
-        selected: false,
-      },
-      {
-        name: "Netherlands",
-        selected: false,
-      },
-      {
-        name: "Oman",
-        selected: false,
-      },
-      {
-        name: "Peru",
-        selected: false,
-      },
-      {
-        name: "Qatar",
-        selected: false,
-      },
-      {
-        name: "Russia",
-        selected: false,
-      },
-      {
-        name: "Spain",
-        selected: false,
-      },
-      {
-        name: "Thailand",
-        selected: false,
-      },
-      {
-        name: "United Kingdom",
-        selected: false,
-      },
-      {
-        name: "Vietnam",
-        selected: false,
-      },
-      {
-        name: "Italy",
-        selected: false,
-      },
-      {
-        name: "United States",
-        selected: false,
-      },
-      {
-        name: "China",
-        selected: false,
-      },
-      {
-        name: "South Africa",
-        selected: false,
-      },
-      {
-        name: "New Zealand",
-        selected: false,
-      },
-      {
-        name: "Argentina",
-        selected: false,
-      },
-      {
-        name: "Belgium",
-        selected: false,
-      },
-      {
-        name: "Chile",
-        selected: false,
-      },
-    ],
-    "Capital Cities": [
-      {
-        name: "Tokyo",
-        selected: false,
-      },
-      {
-        name: "Paris",
-        selected: false,
-      },
-      {
-        name: "London",
-        selected: false,
-      },
-      {
-        name: "Kuala Lumpur",
-        selected: false,
-      },
-      {
-        name: "Berlin",
-        selected: false,
-      },
-      {
-        name: "Ottawa",
-        selected: false,
-      },
-      {
-        name: "Canberra",
-        selected: false,
-      },
-      {
-        name: "Moscow",
-        selected: false,
-      },
-      {
-        name: "Beijing",
-        selected: false,
-      },
-      {
-        name: "New Delhi",
-        selected: false,
-      },
-      {
-        name: "Copenhagen",
-        selected: false,
-      },
-      {
-        name: "Cairo",
-        selected: false,
-      },
-      {
-        name: "Madrid",
-        selected: false,
-      },
-      {
-        name: "Rome",
-        selected: false,
-      },
-      {
-        name: "Buenos Aires",
-        selected: false,
-      },
-      {
-        name: "Bangkok",
-        selected: false,
-      },
-      {
-        name: "Vienna",
-        selected: false,
-      },
-      {
-        name: "Seoul",
-        selected: false,
-      },
-      {
-        name: "Jakarta",
-        selected: false,
-      },
-      {
-        name: "Lisbon",
-        selected: false,
-      },
-      {
-        name: "Riyadh",
-        selected: false,
-      },
-      {
-        name: "Helsinki",
-        selected: false,
-      },
-      {
-        name: "Oslo",
-        selected: false,
-      },
-      {
-        name: "Stockholm",
-        selected: false,
-      },
-      {
-        name: "Athens",
-        selected: false,
-      },
-      {
-        name: "Dublin",
-        selected: false,
-      },
-      {
-        name: "Prague",
-        selected: false,
-      },
-      {
-        name: "Budapest",
-        selected: false,
-      },
-      {
-        name: "Warsaw",
-        selected: false,
-      },
-      {
-        name: "Amsterdam",
-        selected: false,
-      },
-    ],
-    Animals: [
-      {
-        name: "Elephant",
-        selected: false,
-      },
-      {
-        name: "Lion",
-        selected: false,
-      },
-      {
-        name: "Giraffe",
-        selected: false,
-      },
-      {
-        name: "Penguin",
-        selected: false,
-      },
-      {
-        name: "Dolphin",
-        selected: false,
-      },
-      {
-        name: "Tiger",
-        selected: false,
-      },
-      {
-        name: "Kangaroo",
-        selected: false,
-      },
-      {
-        name: "Panda",
-        selected: false,
-      },
-      {
-        name: "Zebra",
-        selected: false,
-      },
-      {
-        name: "Polar Bear",
-        selected: false,
-      },
-      {
-        name: "Cheetah",
-        selected: false,
-      },
-      {
-        name: "Rhino",
-        selected: false,
-      },
-      {
-        name: "Buffalo",
-        selected: false,
-      },
-      {
-        name: "Koala",
-        selected: false,
-      },
-      {
-        name: "Gorilla",
-        selected: false,
-      },
-      {
-        name: "Chimpanzee",
-        selected: false,
-      },
-      {
-        name: "Crocodile",
-        selected: false,
-      },
-      {
-        name: "Flamingo",
-        selected: false,
-      },
-      {
-        name: "Peacock",
-        selected: false,
-      },
-      {
-        name: "Jaguar",
-        selected: false,
-      },
-      {
-        name: "Leopard",
-        selected: false,
-      },
-      {
-        name: "Wolf",
-        selected: false,
-      },
-      {
-        name: "Fox",
-        selected: false,
-      },
-      {
-        name: "Bald Eagle",
-        selected: false,
-      },
-      {
-        name: "Owl",
-        selected: false,
-      },
-      {
-        name: "Frog",
-        selected: false,
-      },
-      {
-        name: "Shark",
-        selected: false,
-      },
-      {
-        name: "Octopus",
-        selected: false,
-      },
-      {
-        name: "Turtle",
-        selected: false,
-      },
-      {
-        name: "Snake",
-        selected: false,
-      },
-    ],
+
+    // prettier-ignore
+    Countries: [{name: "Australia", selected: false,}, {name: "Brazil", selected: false,}, {name: "Canada", selected: false,}, 
+                {name: "Denmark", selected: false,}, {name: "Egypt", selected: false,}, {name: "France", selected: false,}, 
+                {name: "Germany", selected: false,}, {name: "Hungary", selected: false,}, {name: "India", selected: false,}, 
+                {name: "Japan", selected: false,}, {name: "Kenya", selected: false,}, {name: "Luxembourg", selected: false,}, 
+                {name: "Mexico", selected: false,}, {name: "Netherlands", selected: false,}, {name: "Oman", selected: false,}, 
+                {name: "Peru", selected: false,}, {name: "Qatar", selected: false,}, {name: "Russia", selected: false,}, 
+                {name: "Spain", selected: false,}, {name: "Thailand", selected: false,}, {name: "United Kingdom", selected: false,}, 
+                {name: "Vietnam", selected: false,}, {name: "Italy", selected: false,}, {name: "United States", selected: false,}, 
+                {name: "China", selected: false,}, {name: "South Africa", selected: false,}, {name: "New Zealand", selected: false,}, 
+                {name: "Argentina", selected: false,}, {name: "Belgium", selected: false,}, {name: "Chile", selected: false,}, 
+              ],
+
+    // prettier-ignore
+    "Capital Cities": [{name: "Tokyo", selected: false,}, {name: "Paris", selected: false,}, {name: "London", selected: false,}, 
+                       {name: "Kuala Lumpur", selected: false,}, {name: "Berlin", selected: false,}, {name: "Ottawa", selected: false,}, 
+                       {name: "Canberra", selected: false,}, {name: "Moscow", selected: false,}, {name: "Beijing", selected: false,}, 
+                       {name: "New Delhi", selected: false,}, {name: "Copenhagen", selected: false,}, {name: "Cairo", selected: false,}, 
+                       {name: "Madrid", selected: false,}, {name: "Rome", selected: false,}, {name: "Buenos Aires", selected: false,}, 
+                       {name: "Bangkok", selected: false,}, {name: "Vienna", selected: false,}, {name: "Seoul", selected: false,}, 
+                       {name: "Jakarta", selected: false,}, {name: "Lisbon", selected: false,}, {name: "Riyadh", selected: false,}, 
+                       {name: "Helsinki", selected: false,}, {name: "Oslo", selected: false,}, {name: "Stockholm", selected: false,}, 
+                       {name: "Athens", selected: false,}, {name: "Dublin", selected: false,}, {name: "Prague", selected: false,}, 
+                       {name: "Budapest", selected: false,}, {name: "Warsaw", selected: false,}, {name: "Amsterdam", selected: false,}, 
+                      ],
+
+    // prettier-ignore
+    Animals: [{name: "Elephant", selected: false,}, {name: "Lion", selected: false,}, {name: "Giraffe", selected: false,}, {name: "Penguin", selected: false,}, 
+              {name: "Dolphin", selected: false,}, {name: "Tiger", selected: false,}, {name: "Kangaroo", selected: false,}, {name: "Panda", selected: false,}, 
+              {name: "Zebra", selected: false,}, {name: "Polar Bear", selected: false,}, {name: "Cheetah", selected: false,}, {name: "Rhino", selected: false,}, 
+              {name: "Buffalo", selected: false,}, {name: "Koala", selected: false,}, {name: "Gorilla", selected: false,}, {name: "Chimpanzee", selected: false,}, 
+              {name: "Crocodile", selected: false,}, {name: "Flamingo", selected: false,}, {name: "Peacock", selected: false,}, {name: "Jaguar", selected: false,}, 
+              {name: "Leopard", selected: false,}, {name: "Wolf", selected: false,}, {name: "Fox", selected: false,}, {name: "Bald Eagle", selected: false,}, 
+              {name: "Owl", selected: false,}, {name: "Frog", selected: false,}, {name: "Shark", selected: false,}, {name: "Octopus", selected: false,}, 
+              {name: "Turtle", selected: false,}, {name: "Snake", selected: false,}, 
+             ],
+
+    //  prettier-ignore
     Sports: [
       {
         name: "Soccer",
