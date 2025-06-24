@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   const info = {
     // prettier-ignore
-    Movies: [{name: "The Godfather", selected: false, }, {name: "Titanic", selected: false,},{name: "Inception",selected: false,}, 
+    movies: [{name: "The Godfather", selected: false, }, {name: "Titanic", selected: false,},{name: "Inception",selected: false,}, 
              {name: "Gladiator", selected: false,}, {name: "Casablanca", selected: false,}, {name: "Psycho", selected: false,},
              {name: "Avatar", selected: false,}, {name: "Jaws", selected: false,}, {name: "Frozen", selected: false,},
              {name: "The Matrix", selected: false, }, {name: "Goodfellas", selected: false,}, {name: "Braveheart", selected: false,},
@@ -17,21 +17,21 @@ function App() {
             ],
 
     // prettier-ignore
-    "TV Shows": [{name: "Breaking Bad", selected: false,}, {name: "South Park", selected: false,}, {name: "Game of Thrones",selected: false,}, 
-                 {name: "Stranger Things", selected: false,}, {name: "Bridgertons", selected: false,}, {name: "The Sopranos", selected: false,}, 
-                 {name: "Friends", selected: false,}, {name: "The Office", selected: false,}, {name: "Sherlock", selected: false,}, 
-                 {name: "Black Mirror", selected: false,}, {name: "The Crown", selected: false,}, {name: "Westworld", selected: false,}, 
-                 {name: "Better Call Saul", selected: false,}, {name: "Orange Is the New Black", selected: false,}, {name: "The Simpsons", selected: false,}, 
-                 {name: "Arrested Development", selected: false,}, {name: "Succession", selected: false,}, {name: "Fargo", selected: false,}, 
-                 {name: "Mad Men", selected: false,}, {name: "The West Wing", selected: false,}, {name: "Dexter", selected: false,}, 
-                 {name: "Rick and Morty", selected: false,}, {name: "Lost", selected: false,}, {name: "Doctor Who", selected: false,}, 
-                 {name: "The Walking Dead", selected: false,}, {name: "Peaky Blinders", selected: false,}, 
-                 {name: "Buffy the Vampire Slayer", selected: false,}, {name: "The Big Bang Theory", selected: false,}, 
-                 {name: "Curb Your Enthusiasm", selected: false,}, {name: "Ted Lasso", selected: false,}, {name: "True Detective", selected: false,}, 
-                ],
+    tvShows: [{name: "Breaking Bad", selected: false,}, {name: "South Park", selected: false,}, {name: "Game of Thrones",selected: false,}, 
+              {name: "Stranger Things", selected: false,}, {name: "Bridgertons", selected: false,}, {name: "The Sopranos", selected: false,}, 
+              {name: "Friends", selected: false,}, {name: "The Office", selected: false,}, {name: "Sherlock", selected: false,}, 
+              {name: "Black Mirror", selected: false,}, {name: "The Crown", selected: false,}, {name: "Westworld", selected: false,}, 
+              {name: "Better Call Saul", selected: false,}, {name: "Orange Is the New Black", selected: false,}, {name: "The Simpsons", selected: false,}, 
+              {name: "Arrested Development", selected: false,}, {name: "Succession", selected: false,}, {name: "Fargo", selected: false,}, 
+              {name: "Mad Men", selected: false,}, {name: "The West Wing", selected: false,}, {name: "Dexter", selected: false,}, 
+              {name: "Rick and Morty", selected: false,}, {name: "Lost", selected: false,}, {name: "Doctor Who", selected: false,}, 
+              {name: "The Walking Dead", selected: false,}, {name: "Peaky Blinders", selected: false,}, 
+              {name: "Buffy the Vampire Slayer", selected: false,}, {name: "The Big Bang Theory", selected: false,}, 
+              {name: "Curb Your Enthusiasm", selected: false,}, {name: "Ted Lasso", selected: false,}, {name: "True Detective", selected: false,}, 
+             ],
 
     // prettier-ignore
-    Countries: [{name: "Australia", selected: false,}, {name: "Brazil", selected: false,}, {name: "Canada", selected: false,}, 
+    countries: [{name: "Australia", selected: false,}, {name: "Brazil", selected: false,}, {name: "Canada", selected: false,}, 
                 {name: "Denmark", selected: false,}, {name: "Egypt", selected: false,}, {name: "France", selected: false,}, 
                 {name: "Germany", selected: false,}, {name: "Hungary", selected: false,}, {name: "India", selected: false,}, 
                 {name: "Japan", selected: false,}, {name: "Kenya", selected: false,}, {name: "Luxembourg", selected: false,}, 
@@ -44,20 +44,20 @@ function App() {
               ],
 
     // prettier-ignore
-    "Capital Cities": [{name: "Tokyo", selected: false,}, {name: "Paris", selected: false,}, {name: "London", selected: false,}, 
-                       {name: "Kuala Lumpur", selected: false,}, {name: "Berlin", selected: false,}, {name: "Ottawa", selected: false,}, 
-                       {name: "Canberra", selected: false,}, {name: "Moscow", selected: false,}, {name: "Beijing", selected: false,}, 
-                       {name: "New Delhi", selected: false,}, {name: "Copenhagen", selected: false,}, {name: "Cairo", selected: false,}, 
-                       {name: "Madrid", selected: false,}, {name: "Rome", selected: false,}, {name: "Buenos Aires", selected: false,}, 
-                       {name: "Bangkok", selected: false,}, {name: "Vienna", selected: false,}, {name: "Seoul", selected: false,}, 
-                       {name: "Jakarta", selected: false,}, {name: "Lisbon", selected: false,}, {name: "Riyadh", selected: false,}, 
-                       {name: "Helsinki", selected: false,}, {name: "Oslo", selected: false,}, {name: "Stockholm", selected: false,}, 
-                       {name: "Athens", selected: false,}, {name: "Dublin", selected: false,}, {name: "Prague", selected: false,}, 
-                       {name: "Budapest", selected: false,}, {name: "Warsaw", selected: false,}, {name: "Amsterdam", selected: false,}, 
-                      ],
+    capitalCities: [{name: "Tokyo", selected: false,}, {name: "Paris", selected: false,}, {name: "London", selected: false,}, 
+                    {name: "Kuala Lumpur", selected: false,}, {name: "Berlin", selected: false,}, {name: "Ottawa", selected: false,}, 
+                    {name: "Canberra", selected: false,}, {name: "Moscow", selected: false,}, {name: "Beijing", selected: false,}, 
+                    {name: "New Delhi", selected: false,}, {name: "Copenhagen", selected: false,}, {name: "Cairo", selected: false,}, 
+                    {name: "Madrid", selected: false,}, {name: "Rome", selected: false,}, {name: "Buenos Aires", selected: false,}, 
+                    {name: "Bangkok", selected: false,}, {name: "Vienna", selected: false,}, {name: "Seoul", selected: false,}, 
+                    {name: "Jakarta", selected: false,}, {name: "Lisbon", selected: false,}, {name: "Riyadh", selected: false,}, 
+                    {name: "Helsinki", selected: false,}, {name: "Oslo", selected: false,}, {name: "Stockholm", selected: false,}, 
+                    {name: "Athens", selected: false,}, {name: "Dublin", selected: false,}, {name: "Prague", selected: false,}, 
+                    {name: "Budapest", selected: false,}, {name: "Warsaw", selected: false,}, {name: "Amsterdam", selected: false,}, 
+                  ],
 
     // prettier-ignore
-    Animals: [{name: "Elephant", selected: false,}, {name: "Lion", selected: false,}, {name: "Giraffe", selected: false,}, {name: "Penguin", selected: false,}, 
+    animals: [{name: "Elephant", selected: false,}, {name: "Lion", selected: false,}, {name: "Giraffe", selected: false,}, {name: "Penguin", selected: false,}, 
               {name: "Dolphin", selected: false,}, {name: "Tiger", selected: false,}, {name: "Kangaroo", selected: false,}, {name: "Panda", selected: false,}, 
               {name: "Zebra", selected: false,}, {name: "Polar Bear", selected: false,}, {name: "Cheetah", selected: false,}, {name: "Rhino", selected: false,}, 
               {name: "Buffalo", selected: false,}, {name: "Koala", selected: false,}, {name: "Gorilla", selected: false,}, {name: "Chimpanzee", selected: false,}, 
@@ -68,7 +68,7 @@ function App() {
              ],
 
     //  prettier-ignore
-    Sports: [{name: "Soccer", selected: false,}, {name: "Basketball", selected: false,}, {name: "Tennis", selected: false,}, 
+    sports: [{name: "Soccer", selected: false,}, {name: "Basketball", selected: false,}, {name: "Tennis", selected: false,}, 
              {name: "Baseball", selected: false,}, {name: "Rock Climbing", selected: false,}, {name: "Swimming", selected: false,}, 
              {name: "Volleyball", selected: false,}, {name: "Table Tennis", selected: false,}, {name: "Badminton", selected: false,}, 
              {name: "Rugby", selected: false,}, {name: "Cricket", selected: false,}, {name: "Hockey", selected: false,}, 
@@ -81,7 +81,7 @@ function App() {
             ],
 
     // prettier-ignore
-    Minecraft: [{name: "Creeper", selected: false,}, {name: "Steve", selected: false,}, {name: "Enderman", selected: false,}, {name: "Zombie", selected: false,}, 
+    minecraft: [{name: "Creeper", selected: false,}, {name: "Steve", selected: false,}, {name: "Enderman", selected: false,}, {name: "Zombie", selected: false,}, 
                 {name: "Diamond", selected: false,}, {name: "Redstone", selected: false,}, {name: "Lush Cave", selected: false,}, {name: "Pickaxe", selected: false,}, 
                 {name: "Crafting Table", selected: false,}, {name: "Ender Dragon", selected: false,}, {name: "Nether", selected: false,}, {name: "Ghast", selected: false,}, 
                 {name: "Blaze", selected: false,}, {name: "Villager", selected: false,}, {name: "Ender Pearl", selected: false,}, {name: "Obsidian", selected: false,}, 
