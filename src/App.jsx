@@ -68,246 +68,28 @@ function App() {
              ],
 
     //  prettier-ignore
-    Sports: [
-      {
-        name: "Soccer",
-        selected: false,
-      },
-      {
-        name: "Basketball",
-        selected: false,
-      },
-      {
-        name: "Tennis",
-        selected: false,
-      },
-      {
-        name: "Baseball",
-        selected: false,
-      },
-      {
-        name: "Rock Climbing",
-        selected: false,
-      },
-      {
-        name: "Swimming",
-        selected: false,
-      },
-      {
-        name: "Volleyball",
-        selected: false,
-      },
-      {
-        name: "Table Tennis",
-        selected: false,
-      },
-      {
-        name: "Badminton",
-        selected: false,
-      },
-      {
-        name: "Rugby",
-        selected: false,
-      },
-      {
-        name: "Cricket",
-        selected: false,
-      },
-      {
-        name: "Hockey",
-        selected: false,
-      },
-      {
-        name: "Boxing",
-        selected: false,
-      },
-      {
-        name: "Martial Arts",
-        selected: false,
-      },
-      {
-        name: "Fencing",
-        selected: false,
-      },
-      {
-        name: "Archery",
-        selected: false,
-      },
-      {
-        name: "Skiing",
-        selected: false,
-      },
-      {
-        name: "Bobsleigh",
-        selected: false,
-      },
-      {
-        name: "Cycling",
-        selected: false,
-      },
-      {
-        name: "Curling",
-        selected: false,
-      },
-      {
-        name: "Surfing",
-        selected: false,
-      },
-      {
-        name: "Diving",
-        selected: false,
-      },
-      {
-        name: "Gymnastics",
-        selected: false,
-      },
-      {
-        name: "Athletics",
-        selected: false,
-      },
-      {
-        name: "Rowing",
-        selected: false,
-      },
-      {
-        name: "Sailing",
-        selected: false,
-      },
-      {
-        name: "Canoeing",
-        selected: false,
-      },
-      {
-        name: "Ice Hockey",
-        selected: false,
-      },
-      {
-        name: "Triathlon",
-        selected: false,
-      },
-      {
-        name: "American Football",
-        selected: false,
-      },
-    ],
-    Minecraft: [
-      {
-        name: "Creeper",
-        selected: false,
-      },
-      {
-        name: "Steve",
-        selected: false,
-      },
-      {
-        name: "Enderman",
-        selected: false,
-      },
-      {
-        name: "Zombie",
-        selected: false,
-      },
-      {
-        name: "Diamond",
-        selected: false,
-      },
-      {
-        name: "Redstone",
-        selected: false,
-      },
-      {
-        name: "Lush Cave",
-        selected: false,
-      },
-      {
-        name: "Pickaxe",
-        selected: false,
-      },
-      {
-        name: "Crafting Table",
-        selected: false,
-      },
-      {
-        name: "Ender Dragon",
-        selected: false,
-      },
-      {
-        name: "Nether",
-        selected: false,
-      },
-      {
-        name: "Ghast",
-        selected: false,
-      },
-      {
-        name: "Blaze",
-        selected: false,
-      },
-      {
-        name: "Villager",
-        selected: false,
-      },
-      {
-        name: "Ender Pearl",
-        selected: false,
-      },
-      {
-        name: "Obsidian",
-        selected: false,
-      },
-      {
-        name: "Enchantment Table",
-        selected: false,
-      },
-      {
-        name: "Nether Portal",
-        selected: false,
-      },
-      {
-        name: "Armadillo",
-        selected: false,
-      },
-      {
-        name: "Sniffer",
-        selected: false,
-      },
-      {
-        name: "Trial Chamber",
-        selected: false,
-      },
-      {
-        name: "Cherry Grove",
-        selected: false,
-      },
-      {
-        name: "Vault",
-        selected: false,
-      },
-      {
-        name: "Ominous bottle",
-        selected: false,
-      },
-      {
-        name: "Woodland mansion",
-        selected: false,
-      },
-      {
-        name: "Wind charge",
-        selected: false,
-      },
-      {
-        name: "Fire aspect",
-        selected: false,
-      },
-      {
-        name: "Orange terracotta",
-        selected: false,
-      },
-      {
-        name: "Minecraft",
-        selected: false,
-      },
-    ],
+    Sports: [{name: "Soccer", selected: false,}, {name: "Basketball", selected: false,}, {name: "Tennis", selected: false,}, 
+             {name: "Baseball", selected: false,}, {name: "Rock Climbing", selected: false,}, {name: "Swimming", selected: false,}, 
+             {name: "Volleyball", selected: false,}, {name: "Table Tennis", selected: false,}, {name: "Badminton", selected: false,}, 
+             {name: "Rugby", selected: false,}, {name: "Cricket", selected: false,}, {name: "Hockey", selected: false,}, 
+             {name: "Boxing", selected: false,}, {name: "Martial Arts", selected: false,}, {name: "Fencing", selected: false,}, 
+             {name: "Archery", selected: false,}, {name: "Skiing", selected: false,}, {name: "Bobsleigh", selected: false,}, 
+             {name: "Cycling", selected: false,}, {name: "Curling", selected: false,}, {name: "Surfing", selected: false,}, 
+             {name: "Diving", selected: false,}, {name: "Gymnastics", selected: false,}, {name: "Athletics", selected: false,}, 
+             {name: "Rowing", selected: false,}, {name: "Sailing", selected: false,}, {name: "Canoeing", selected: false,}, 
+             {name: "Ice Hockey", selected: false,}, {name: "Triathlon", selected: false,}, {name: "American Football", selected: false,},
+            ],
+
+    // prettier-ignore
+    Minecraft: [{name: "Creeper", selected: false,}, {name: "Steve", selected: false,}, {name: "Enderman", selected: false,}, {name: "Zombie", selected: false,}, 
+                {name: "Diamond", selected: false,}, {name: "Redstone", selected: false,}, {name: "Lush Cave", selected: false,}, {name: "Pickaxe", selected: false,}, 
+                {name: "Crafting Table", selected: false,}, {name: "Ender Dragon", selected: false,}, {name: "Nether", selected: false,}, {name: "Ghast", selected: false,}, 
+                {name: "Blaze", selected: false,}, {name: "Villager", selected: false,}, {name: "Ender Pearl", selected: false,}, {name: "Obsidian", selected: false,}, 
+                {name: "Enchantment Table", selected: false,}, {name: "Nether Portal", selected: false,}, {name: "Armadillo", selected: false,},  
+                {name: "Sniffer", selected: false,}, {name: "Trial Chamber", selected: false,}, {name: "Cherry Grove", selected: false,}, {name: "Vault", selected: false,}, 
+                {name: "Ominous bottle", selected: false,}, {name: "Woodland mansion", selected: false,}, {name: "Wind charge", selected: false,}, 
+                {name: "Fire aspect", selected: false,}, {name: "Orange terracotta", selected: false,}, {name: "Minecraft", selected: false,}, 
+              ],
   };
 
   return <></>;
