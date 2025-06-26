@@ -108,28 +108,37 @@ function App() {
   const [buttons, setButtons] = useState(letterBtnInfo);
   const [wrongGuess, setWrongGuess] = useState(0);
 
+  const randomNum = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1) + min);
+
+  // console.log(randomNum(0, 999));
+
   return (
     <>
+      <nav>
+        <p className="heading">Hangman. Do (or) Die</p>
+        <p className="wrong-guesses">Guessed wrong: {wrongGuess}</p>
+      </nav>
       <main>
-        <img src={`./${wrongGuess}wrongGuess.jpeg`} />
-      </main>
+        <img className="image" src={`./${wrongGuess}wrongGuess.jpeg`} />
 
-      <div className="letter-buttons">
-        {buttons.map((button, index) => (
-          <button className="letter-btn btn" key={index}>
-            {" "}
-            {button.letter}{" "}
-          </button>
-        ))}
-      </div>
-      <button
-        className="reset-btn btn"
-        onClick={() =>
-          setWrongGuess((prev) => (prev !== 6 ? prev + 1 : prev - 6))
-        }
-      >
-        Reset
-      </button>
+        <div className="letter-buttons">
+          {buttons.map((button, index) => (
+            <button className="letter-btn btn" key={index}>
+              {" "}
+              {button.letter}{" "}
+            </button>
+          ))}
+        </div>
+        <button
+          className="reset-btn btn"
+          onClick={() =>
+            setWrongGuess((prev) => (prev !== 6 ? prev + 1 : prev - 6))
+          }
+        >
+          Reset
+        </button>
+      </main>
     </>
   );
 }
