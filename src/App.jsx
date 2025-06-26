@@ -92,7 +92,38 @@ function App() {
               ],
   };
 
-  return <></>;
+  // prettier-ignore
+  const letterBtnInfo = [
+                        { letter: "a", isClicked: false }, { letter: "b", isClicked: false }, { letter: "c", isClicked: false },
+                        { letter: "d", isClicked: false }, { letter: "e", isClicked: false }, { letter: "f", isClicked: false },
+                        { letter: "g", isClicked: false }, { letter: "h", isClicked: false }, { letter: "i", isClicked: false },
+                        { letter: "j", isClicked: false }, { letter: "k", isClicked: false }, { letter: "l", isClicked: false },
+                        { letter: "m", isClicked: false }, { letter: "n", isClicked: false }, { letter: "o", isClicked: false },
+                        { letter: "p", isClicked: false }, { letter: "q", isClicked: false }, { letter: "r", isClicked: false },
+                        { letter: "s", isClicked: false }, { letter: "t", isClicked: false }, { letter: "u", isClicked: false },
+                        { letter: "v", isClicked: false }, { letter: "w", isClicked: false }, { letter: "x", isClicked: false }, 
+                        { letter: "y", isClicked: false }, { letter: "z", isClicked: false },
+                        ];
+
+  const [buttons, setButtons] = useState(letterBtnInfo);
+
+  return (
+    <>
+      <main>
+        <img src="./noWrongGuess.jpeg" />
+      </main>
+
+      <div className="letter-buttons">
+        {buttons.map((button, index) => (
+          <button className="letter-btn btn" key={index}>
+            {" "}
+            {button.letter}{" "}
+          </button>
+        ))}
+      </div>
+      <button className="reset-btn btn">Reset</button>
+    </>
+  );
 }
 
 export default App;

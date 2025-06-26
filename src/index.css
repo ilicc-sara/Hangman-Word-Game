@@ -1,3 +1,45 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Poppins", "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  background-color: rgb(23, 27, 25);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.letter-buttons {
+  text-align: center;
+  /* background-color: darkmagenta; */
+  margin: 0 auto;
+  width: 800px;
+}
+
+.btn {
+  padding: 10px;
+  height: 70px;
+
+  margin: 5px;
+  font-size: 28px;
+  background-color: #07ffc9;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.letter-btn {
+  width: 70px;
+}
+
+.reset-btn {
+  margin: 10px auto;
+}
+
+.btn:hover {
+  background-color: rgb(217, 255, 236);
 }
