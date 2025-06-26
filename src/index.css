@@ -38,6 +38,8 @@
 
 .reset-btn {
   margin: 10px auto;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .btn:hover {

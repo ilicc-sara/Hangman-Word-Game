@@ -106,11 +106,12 @@ function App() {
                         ];
 
   const [buttons, setButtons] = useState(letterBtnInfo);
+  const [wrongGuess, setWrongGuess] = useState(0);
 
   return (
     <>
       <main>
-        <img src="./noWrongGuess.jpeg" />
+        <img src={`./${wrongGuess}wrongGuess.jpeg`} />
       </main>
 
       <div className="letter-buttons">
@@ -121,7 +122,14 @@ function App() {
           </button>
         ))}
       </div>
-      <button className="reset-btn btn">Reset</button>
+      <button
+        className="reset-btn btn"
+        onClick={() =>
+          setWrongGuess((prev) => (prev !== 6 ? prev + 1 : prev - 6))
+        }
+      >
+        Reset
+      </button>
     </>
   );
 }
