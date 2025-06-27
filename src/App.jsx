@@ -111,8 +111,6 @@ function App() {
   const [information, setInformation] = useState(info);
   const [buttons, setButtons] = useState(letterBtnInfo);
   const [wrongGuess, setWrongGuess] = useState(0);
-  // const [randomWord, setRandomWord] = useState(null);
-  // const [hiddenWord, setHiddenWord] = useState(null);
 
   const randomWord = useRef(
     information.movies[randomNum(0, information.movies.length)].name
@@ -170,28 +168,11 @@ function App() {
   //   return randomWord, hiddenWord;
   // }, []);
 
-  // const randomWord =
-  //   information.movies[randomNum(0, information.movies.length)].name;
-
-  // const hiddenWord = randomWord
-  //   .split("")
-  //   .filter((letter) => letter !== "'")
-  //   .map((letter) => {
-  //     if (letter !== " ") {
-  //       return "_";
-  //     } else if (letter === " ") {
-  //       return "  ";
-  //     }
-  //   })
-  //   .join("");
-
   console.log(randomWord.current);
   console.log(hiddenWord);
 
   function showHiddenLetter(letter) {
     if (randomWord.current.toLowerCase().includes(letter)) {
-      // console.log(randomWord.current.toLowerCase().indexOf(`${letter}`));
-
       console.log(randomWord.current.toLowerCase().split(""));
       const wordArray = randomWord.current.toLowerCase().split("");
 
@@ -282,19 +263,6 @@ function App() {
         {!gameOver && (
           <div className="letter-buttons">
             {buttons.map((button, index) => (
-              // <button
-              //   className="letter-btn btn"
-              //   key={index}
-              //   onClick={() => {
-              //     changeBtnState(button.letter);
-              //     showHiddenLetter(button.letter);
-              //   }}
-              //   disabled={button.isClicked}
-              // >
-              //   {" "}
-              //   {button.letter}{" "}
-              // </button>
-
               <Button
                 key={index}
                 variation={"letterBtn"}
