@@ -116,7 +116,20 @@ function App() {
     information.movies[randomNum(0, information.movies.length)].name
   );
 
-  const hiddenWord = useRef(
+  // const hiddenWord = useRef(
+  //   randomWord.current
+  //     .split("")
+  //     .filter((letter) => letter !== "'")
+  //     .map((letter) => {
+  //       if (letter !== " ") {
+  //         return "_";
+  //       } else if (letter === " ") {
+  //         return "  ";
+  //       }
+  //     })
+  //     .join("")
+  // );
+  const [hiddenWord, setHiddenWord] = useState(
     randomWord.current
       .split("")
       .filter((letter) => letter !== "'")
@@ -153,7 +166,7 @@ function App() {
   // const randomWord =
   //   information.movies[randomNum(0, information.movies.length)].name;
 
-  // const hiddenWord = randomWord.current
+  // const hiddenWord = randomWord
   //   .split("")
   //   .filter((letter) => letter !== "'")
   //   .map((letter) => {
@@ -165,8 +178,52 @@ function App() {
   //   })
   //   .join("");
 
-  // console.log(randomWord);
-  // console.log(hiddenWord);
+  console.log(randomWord.current);
+  console.log(hiddenWord);
+
+  function showHiddenLetter(letter) {
+    if (randomWord.current.toLowerCase().includes(letter)) {
+      // console.log(randomWord.current.toLowerCase().indexOf(`${letter}`));
+
+      console.log(randomWord.current.toLowerCase().split(""));
+      const wordArray = randomWord.current.toLowerCase().split("");
+
+      var indices = [];
+
+      wordArray.filter(function (arr, index) {
+        if (arr == letter) {
+          indices.push(index);
+        }
+      });
+      console.log(indices);
+
+      console.log(hiddenWord.split(""));
+
+      const hiddenWordArr = hiddenWord.split("");
+
+      console.log(
+        hiddenWordArr.map((hiddenLetter, i) => {
+          if (indices.includes(i)) {
+            return (hiddenLetter = letter);
+          } else if (hiddenLetter === " ") {
+            return "";
+          } else return hiddenLetter;
+        })
+      );
+
+      const exposedHiddenWord = hiddenWordArr
+        .map((hiddenLetter, i) => {
+          if (indices.includes(i)) {
+            return (hiddenLetter = letter);
+          } else if (hiddenLetter === " ") {
+            return " ";
+          } else return hiddenLetter;
+        })
+        .join("");
+
+      return setHiddenWord(exposedHiddenWord);
+    } else return null;
+  }
 
   return (
     <>
@@ -180,14 +237,14 @@ function App() {
         <p className="text">Guess the movie:</p>
 
         <p className="word"> {randomWord.current} </p>
-        <p className="word"> {hiddenWord.current} </p>
+        <p className="word"> {hiddenWord} </p>
 
         <div className="letter-buttons">
           {buttons.map((button, index) => (
             <button
               className="letter-btn btn"
               key={index}
-              // onClick={}
+              onClick={() => showHiddenLetter(button.letter)}
             >
               {" "}
               {button.letter}{" "}
