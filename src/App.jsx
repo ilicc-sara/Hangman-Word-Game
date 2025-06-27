@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 
 function App() {
@@ -104,14 +104,69 @@ function App() {
                         { letter: "v", isClicked: false }, { letter: "w", isClicked: false }, { letter: "x", isClicked: false }, 
                         { letter: "y", isClicked: false }, { letter: "z", isClicked: false },
                         ];
-
-  const [buttons, setButtons] = useState(letterBtnInfo);
-  const [wrongGuess, setWrongGuess] = useState(0);
-
   const randomNum = (min, max) =>
     Math.floor(Math.random() * (max - min + 1) + min);
 
-  // console.log(randomNum(0, 999));
+  const [information, setInformation] = useState(info);
+  const [buttons, setButtons] = useState(letterBtnInfo);
+  const [wrongGuess, setWrongGuess] = useState(0);
+  // const [randomWord, setRandomWord] = useState(null);
+  // const [hiddenWord, setHiddenWord] = useState(null);
+  const randomWord = useRef(
+    information.movies[randomNum(0, information.movies.length)].name
+  );
+
+  const hiddenWord = useRef(
+    randomWord.current
+      .split("")
+      .filter((letter) => letter !== "'")
+      .map((letter) => {
+        if (letter !== " ") {
+          return "_";
+        } else if (letter === " ") {
+          return "  ";
+        }
+      })
+      .join("")
+  );
+
+  // useEffect(() => {
+  //   const randomWordFormed =
+  //     information.movies[randomNum(0, information.movies.length)].name;
+
+  //   const generateHiddenWord = randomWordFormed
+  //     .split("")
+  //     .filter((letter) => letter !== "'")
+  //     .map((letter) => {
+  //       if (letter !== " ") {
+  //         return "_";
+  //       } else if (letter === " ") {
+  //         return "  ";
+  //       }
+  //     })
+  //     .join("");
+  //   setRandomWord(randomWordFormed);
+  //   setHiddenWord(generateHiddenWord);
+  //   return randomWord, hiddenWord;
+  // }, []);
+
+  // const randomWord =
+  //   information.movies[randomNum(0, information.movies.length)].name;
+
+  // const hiddenWord = randomWord.current
+  //   .split("")
+  //   .filter((letter) => letter !== "'")
+  //   .map((letter) => {
+  //     if (letter !== " ") {
+  //       return "_";
+  //     } else if (letter === " ") {
+  //       return "  ";
+  //     }
+  //   })
+  //   .join("");
+
+  // console.log(randomWord);
+  // console.log(hiddenWord);
 
   return (
     <>
@@ -122,9 +177,18 @@ function App() {
       <main>
         <img className="image" src={`./${wrongGuess}wrongGuess.jpeg`} />
 
+        <p className="text">Guess the movie:</p>
+
+        <p className="word"> {randomWord.current} </p>
+        <p className="word"> {hiddenWord.current} </p>
+
         <div className="letter-buttons">
           {buttons.map((button, index) => (
-            <button className="letter-btn btn" key={index}>
+            <button
+              className="letter-btn btn"
+              key={index}
+              // onClick={}
+            >
               {" "}
               {button.letter}{" "}
             </button>

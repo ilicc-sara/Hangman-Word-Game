@@ -36,6 +36,20 @@ nav {
 .image {
   /* height: 200px; */
 }
+
+.text {
+  color: rgb(217, 255, 236);
+  margin: 20px;
+}
+
+.word {
+  color: rgb(217, 255, 236);
+  margin: 20px;
+  font-size: 28px;
+  letter-spacing: 25px;
+  font-weight: 700;
+}
+
 .letter-buttons {
   text-align: center;
   /* background-color: darkmagenta; */
