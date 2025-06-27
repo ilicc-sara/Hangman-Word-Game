@@ -77,14 +77,22 @@ nav {
   width: 70px;
 }
 
-.clicked {
-  background-color: #f10;
+.clicked,
+.clicked:hover {
+  background-color: rgb(255, 17, 0);
+  cursor: auto;
+  box-shadow: 0 0 10px rgb(255, 17, 0.6);
+  pointer-events: none;
 }
 
 .reset-btn {
   margin: 10px auto;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.game-over-text {
+  color: yellow;
 }
 
 .btn:hover {

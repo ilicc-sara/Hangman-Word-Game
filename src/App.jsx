@@ -113,6 +113,7 @@ function App() {
   const [wrongGuess, setWrongGuess] = useState(0);
   // const [randomWord, setRandomWord] = useState(null);
   // const [hiddenWord, setHiddenWord] = useState(null);
+
   const randomWord = useRef(
     information.movies[randomNum(0, information.movies.length)].name
   );
@@ -130,6 +131,7 @@ function App() {
   //     })
   //     .join("")
   // );
+
   const [hiddenWord, setHiddenWord] = useState(
     randomWord.current
       .split("")
@@ -143,6 +145,10 @@ function App() {
       })
       .join("")
   );
+
+  useEffect(() => {
+    return;
+  }, []);
 
   // useEffect(() => {
   //   const randomWordFormed =
@@ -238,11 +244,22 @@ function App() {
 
   function handleClick(letter) {
     changeBtnState(letter);
-    showHiddenLetter(letter);
-
-    if (!showHiddenLetter(letter)) {
+    if (randomWord.current.toLowerCase().includes(letter)) {
+      showHiddenLetter(letter);
+    } else {
       setWrongGuess((prev) => (prev !== 6 ? prev + 1 : prev - 6));
     }
+  }
+
+  const gameOver = wrongGuess === 6;
+
+  function reset() {
+    setWrongGuess(0);
+    setButtons((prev) => {
+      return prev.map((btn) => {
+        return { ...btn, isClicked: false };
+      });
+    });
   }
 
   return (
@@ -252,44 +269,44 @@ function App() {
         <p className="wrong-guesses">Guessed wrong: {wrongGuess}</p>
       </nav>
       <main>
-        <img className="image" src={`./${wrongGuess}wrongGuess.jpeg`} />
+        <div>
+          <img className="image" src={`./${wrongGuess}wrongGuess.jpeg`} />
 
-        <p className="text">Guess the movie:</p>
+          <p className="text">Guess the movie:</p>
 
-        <p className="word"> {randomWord.current} </p>
-        <p className="word"> {hiddenWord} </p>
-
-        <div className="letter-buttons">
-          {buttons.map((button, index) => (
-            // <button
-            //   className="letter-btn btn"
-            //   key={index}
-            //   onClick={() => {
-            //     changeBtnState(button.letter);
-            //     showHiddenLetter(button.letter);
-            //   }}
-            //   disabled={button.isClicked}
-            // >
-            //   {" "}
-            //   {button.letter}{" "}
-            // </button>
-
-            <Button
-              key={index}
-              variation={"letterBtn"}
-              // className={"letter-btn btn"}
-              letter={button.letter}
-              isClicked={button.isClicked}
-              handleClick={handleClick}
-            />
-          ))}
+          <p className="word"> {randomWord.current} </p>
+          {!gameOver && <p className="word"> {hiddenWord} </p>}
+          {gameOver && <p className="game-over-text"> YOU LOST... </p>}
         </div>
-        <button
-          className="reset-btn btn"
-          // onClick={() =>
 
-          // }
-        >
+        {!gameOver && (
+          <div className="letter-buttons">
+            {buttons.map((button, index) => (
+              // <button
+              //   className="letter-btn btn"
+              //   key={index}
+              //   onClick={() => {
+              //     changeBtnState(button.letter);
+              //     showHiddenLetter(button.letter);
+              //   }}
+              //   disabled={button.isClicked}
+              // >
+              //   {" "}
+              //   {button.letter}{" "}
+              // </button>
+
+              <Button
+                key={index}
+                variation={"letterBtn"}
+                // className={"letter-btn btn"}
+                letter={button.letter}
+                isClicked={button.isClicked}
+                handleClick={handleClick}
+              />
+            ))}
+          </div>
+        )}
+        <button className="reset-btn btn" onClick={() => reset()}>
           Reset
         </button>
       </main>
