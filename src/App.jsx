@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
+import Button from "./Button";
 
 function App() {
   const info = {
@@ -215,14 +216,33 @@ function App() {
         .map((hiddenLetter, i) => {
           if (indices.includes(i)) {
             return (hiddenLetter = letter);
-          } else if (hiddenLetter === " ") {
-            return " ";
+            // } else if (hiddenLetter === " ") {
+            //   return " ";
           } else return hiddenLetter;
         })
         .join("");
 
       return setHiddenWord(exposedHiddenWord);
     } else return null;
+  }
+
+  function changeBtnState(letter) {
+    setButtons((prev) => {
+      return prev.map((btn) => {
+        if (btn.letter === letter) {
+          return { ...btn, isClicked: true };
+        } else return btn;
+      });
+    });
+  }
+
+  function handleClick(letter) {
+    changeBtnState(letter);
+    showHiddenLetter(letter);
+
+    if (!showHiddenLetter(letter)) {
+      setWrongGuess((prev) => (prev !== 6 ? prev + 1 : prev - 6));
+    }
   }
 
   return (
@@ -241,21 +261,34 @@ function App() {
 
         <div className="letter-buttons">
           {buttons.map((button, index) => (
-            <button
-              className="letter-btn btn"
+            // <button
+            //   className="letter-btn btn"
+            //   key={index}
+            //   onClick={() => {
+            //     changeBtnState(button.letter);
+            //     showHiddenLetter(button.letter);
+            //   }}
+            //   disabled={button.isClicked}
+            // >
+            //   {" "}
+            //   {button.letter}{" "}
+            // </button>
+
+            <Button
               key={index}
-              onClick={() => showHiddenLetter(button.letter)}
-            >
-              {" "}
-              {button.letter}{" "}
-            </button>
+              variation={"letterBtn"}
+              // className={"letter-btn btn"}
+              letter={button.letter}
+              isClicked={button.isClicked}
+              handleClick={handleClick}
+            />
           ))}
         </div>
         <button
           className="reset-btn btn"
-          onClick={() =>
-            setWrongGuess((prev) => (prev !== 6 ? prev + 1 : prev - 6))
-          }
+          // onClick={() =>
+
+          // }
         >
           Reset
         </button>

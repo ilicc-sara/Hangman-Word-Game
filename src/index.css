@@ -77,6 +77,10 @@ nav {
   width: 70px;
 }
 
+.clicked {
+  background-color: #f10;
+}
+
 .reset-btn {
   margin: 10px auto;
   padding-left: 15px;
