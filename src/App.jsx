@@ -93,18 +93,6 @@ function App() {
               ],
   };
 
-  // prettier-ignore
-  // const letterBtnInfo = [
-  //                       { letter: "a", isClicked: false }, { letter: "b", isClicked: false }, { letter: "c", isClicked: false },
-  //                       { letter: "d", isClicked: false }, { letter: "e", isClicked: false }, { letter: "f", isClicked: false },
-  //                       { letter: "g", isClicked: false }, { letter: "h", isClicked: false }, { letter: "i", isClicked: false },
-  //                       { letter: "j", isClicked: false }, { letter: "k", isClicked: false }, { letter: "l", isClicked: false },
-  //                       { letter: "m", isClicked: false }, { letter: "n", isClicked: false }, { letter: "o", isClicked: false },
-  //                       { letter: "p", isClicked: false }, { letter: "q", isClicked: false }, { letter: "r", isClicked: false },
-  //                       { letter: "s", isClicked: false }, { letter: "t", isClicked: false }, { letter: "u", isClicked: false },
-  //                       { letter: "v", isClicked: false }, { letter: "w", isClicked: false }, { letter: "x", isClicked: false },
-  //                       { letter: "y", isClicked: false }, { letter: "z", isClicked: false },
-  //                       ];
   const randomNum = (min, max) =>
     Math.floor(Math.random() * (max - min + 1) + min);
 
@@ -120,7 +108,6 @@ function App() {
     ].name.toUpperCase()
   );
 
-  // const [buttons, setButtons] = useState(letterBtnInfo);
   const [wrongGuess, setWrongGuess] = useState(0);
   const [word, setWord] = useState(wordToGuess);
   const [guessedLetters, setGuessedLetters] = useState([]);
@@ -146,93 +133,21 @@ function App() {
     }
   }
 
-  // const [hiddenWord, setHiddenWord] = useState(
-  //   randomWord.current
-  //     .split("")
-  //     .filter((letter) => letter !== "'")
-  //     .map((letter) => {
-  //       if (letter !== " ") {
-  //         return "_";
-  //       } else if (letter === " ") {
-  //         return "  ";
-  //       }
-  //     })
-  //     .join("")
-  // );
-
-  console.log(wordToGuess.current);
-
-  // function showHiddenLetter(letter) {
-  //   if (randomWord.current.toLowerCase().includes(letter)) {
-  //     console.log(randomWord.current.toLowerCase().split(""));
-  //     const wordArray = randomWord.current.toLowerCase().split("");
-
-  //     const indices = [];
-
-  //     wordArray.filter(function (arr, index) {
-  //       if (arr == letter) {
-  //         indices.push(index);
-  //       }
-  //     });
-  //     console.log(indices);
-
-  //     console.log(hiddenWord.split(""));
-
-  //     const hiddenWordArr = hiddenWord.split("");
-
-  //     console.log(
-  //       hiddenWordArr.map((hiddenLetter, i) => {
-  //         if (indices.includes(i)) {
-  //           return (hiddenLetter = letter);
-  //         } else if (hiddenLetter === " ") {
-  //           return "";
-  //         } else return hiddenLetter;
-  //       })
-  //     );
-
-  //     const exposedHiddenWord = hiddenWordArr
-  //       .map((hiddenLetter, i) => {
-  //         if (indices.includes(i)) {
-  //           return (hiddenLetter = letter);
-  //           // } else if (hiddenLetter === " ") {
-  //           //   return " ";
-  //         } else return hiddenLetter;
-  //       })
-  //       .join("");
-
-  //     return setHiddenWord(exposedHiddenWord);
-  //   } else return null;
-  // }
-
-  // function changeBtnState(letter) {
-  //   setButtons((prev) => {
-  //     return prev.map((btn) => {
-  //       if (btn.letter === letter) {
-  //         return { ...btn, isClicked: true };
-  //       } else return btn;
-  //     });
-  //   });
-  // }
-
-  // function handleClick(letter) {
-  //   changeBtnState(letter);
-  //   if (randomWord.current.toLowerCase().includes(letter)) {
-  //     showHiddenLetter(letter);
-  //   } else {
-  //     setWrongGuess((prev) => (prev !== 6 ? prev + 1 : prev - 6));
-  //   }
-  // }
-
   const gameOver = wrongGuess === 6;
 
-  // function reset() {
-  //   setWrongGuess(0);
-  //   setButtons((prev) => {
-  //     return prev.map((btn) => {
-  //       return { ...btn, isClicked: false };
-  //     });
-  //   });
-  // }
+  function reset() {
+    setWrongGuess(0);
+    setGuessedLetters([]);
+    setAlphabet((prev) => {
+      return prev.map((btn) => {
+        return { ...btn, isClicked: false };
+      });
+    });
+    wordToGuess.current =
+      information.movies[
+        randomNum(0, information.movies.length)
+      ].name.toUpperCase();
+  }
 
   return (
     <>
@@ -250,11 +165,14 @@ function App() {
           {!gameOver && (
             <p className="word">
               {" "}
-              {word.current.split("").map((letter) => {
-                if (letter !== " ") {
-                  return guessedLetters.includes(letter) ? letter : "_";
-                } else return " ";
-              })}{" "}
+              {word.current
+                .split("")
+                .filter((letter) => letter !== "'")
+                .map((letter) => {
+                  if (letter !== " ") {
+                    return guessedLetters.includes(letter) ? letter : "_";
+                  } else return " ";
+                })}{" "}
             </p>
           )}
           {gameOver && <p className="game-over-text"> YOU LOST... </p>}
