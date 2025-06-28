@@ -103,12 +103,12 @@ function App() {
 
   const [information, setInformation] = useState(info);
 
-  const { ...properties } = info;
-  const { ...props } = properties;
-  console.log(props);
+  // console.log(Object.getOwnPropertyNames(information));
+
+  const propertyNames = Object.getOwnPropertyNames(information);
 
   const [alphabet, setAlphabet] = useState(alfabet);
-  const [category, setCategory] = useState("movies");
+  const [category, setCategory] = useState(propertyNames[0]);
   const wordToGuess = useRef(
     information[category][
       randomNum(0, information.movies.length)
@@ -178,6 +178,14 @@ function App() {
       </nav>
       <main>
         <div>
+          {/* {propertyNames.map((propertyName) => (
+            <button className="btn">
+              {" "}
+              {propertyName
+                .replace(/([a-z])([A-Z])/g, "$1 $2")
+                .toUpperCase()}{" "}
+            </button>
+          ))} */}
           <img className="image" src={`./${wrongGuess}wrongGuess.jpeg`} />
 
           <p className="text">Guess the movie:</p>
