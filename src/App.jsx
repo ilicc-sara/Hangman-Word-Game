@@ -102,9 +102,15 @@ function App() {
   });
 
   const [information, setInformation] = useState(info);
+
+  const { ...properties } = info;
+  const { ...props } = properties;
+  console.log(props);
+
   const [alphabet, setAlphabet] = useState(alfabet);
+  const [category, setCategory] = useState("movies");
   const wordToGuess = useRef(
-    information.movies[
+    information[category][
       randomNum(0, information.movies.length)
     ].name.toUpperCase()
   );
@@ -155,6 +161,14 @@ function App() {
         randomNum(0, information.movies.length)
       ].name.toUpperCase();
   }
+
+  // const sara = "jaSamMalaCiganka"
+  //   .replace(/([a-z])([A-Z])/g, "$1 $2")
+  //   .toLowerCase();
+
+  // const sara1 = sara.replace(/([a-z])([A-Z])/g, "$1 $2").toLowerCase();
+
+  // console.log(sara);
 
   return (
     <>
