@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import Button from "./Button";
+import { createWebSocketModuleRunnerTransport } from "vite/module-runner";
 
 function App() {
   const info = {
@@ -133,7 +134,13 @@ function App() {
     }
   }
 
-  const gameOver = wrongGuess === 6;
+  const unique = [
+    ...new Set(word.current.split("").filter((letter) => letter !== " ")),
+  ];
+
+  const win = unique.every((letter) => guessedLetters.includes(letter));
+
+  const gameOver = wrongGuess === 6 || win;
 
   function reset() {
     setWrongGuess(0);
@@ -175,7 +182,12 @@ function App() {
                 })}{" "}
             </p>
           )}
-          {gameOver && <p className="game-over-text"> YOU LOST... </p>}
+          {gameOver && (
+            <p className="game-over-text">
+              {" "}
+              {`YOU ${win ? "WON" : "LOST"}...`}{" "}
+            </p>
+          )}
         </div>
 
         {!gameOver && (

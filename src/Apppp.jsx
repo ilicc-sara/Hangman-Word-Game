@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const wordToGuess = "SARA MALA CIGANKA";
+const wordToGuess = "SARA";
 
 const alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
