@@ -116,6 +116,7 @@ function App() {
   const gameOver = wrongGuess === 6 || win;
 
   function reset() {
+    setPlay(false);
     setWrongGuess(0);
     setGuessedLetters([]);
     setAlphabet((prev) => {
@@ -188,24 +189,24 @@ function App() {
         <div>
           <img className="image" src={`./${wrongGuess}wrongGuess.jpeg`} />
 
-          <p className="text">Guess the movie:</p>
+          <p className="text">{`Guess the ${category.current
+            .replace(/([a-z])([A-Z])/g, "$1 $2")
+            .toUpperCase()
+            .slice(0, -1)}:`}</p>
 
           <p className="word"> {wordToGuess.current} </p>
           {!gameOver && (
             <p className="word">
               {" "}
-              {wordToGuess.current
-                .split("")
-                .filter((letter) => letter !== "'")
-                .map((letter) => {
-                  if (letter !== " ") {
-                    return guessedLetters.includes(letter) ? (
-                      <p className="guessed-letter">{letter}</p>
-                    ) : (
-                      "_"
-                    );
-                  } else return " ";
-                })}{" "}
+              {wordToGuess.current.split("").map((letter) => {
+                if (letter !== " ") {
+                  return guessedLetters.includes(letter) ? (
+                    <p className="guessed-letter">{letter}</p>
+                  ) : (
+                    "_"
+                  );
+                } else return " ";
+              })}{" "}
             </p>
           )}
           {gameOver && (
