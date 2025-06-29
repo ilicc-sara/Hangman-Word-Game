@@ -13,7 +13,7 @@ function App() {
              {name: "Fight Club", selected: false,}, {name: "Pulp Fiction", selected: false,}, {name: "Forrest Gump", selected: false,}, 
              {name: "The Lion King", selected: false,}, {name: "Back to the Future", selected: false,}, {name: "Jurassic Park", selected: false,}, 
              {name: "Blade Runner", selected: false,}, {name: "Star Wars", selected: false,}, {name: "The Dark Knight", selected: false,}, 
-             {name: "The Big Lebowski", selected: false,}, {name: "The Wizard of Oz", selected: false,}, {name: "Schindler's List", selected: false,}, 
+             {name: "The Big Lebowski", selected: false,}, {name: "The Wizard of Oz", selected: false,},  
              {name: "Toy Story", selected: false,}, {name: "The Silence of the Lambs", selected: false,}, {name: "Alien", selected: false,}, 
              {name: "Interstellar", selected: false,}, {name: "Raiders of the Lost Ark", selected: false,}, {name: "La La Land", selected: false,}, 
             ],
@@ -46,19 +46,6 @@ function App() {
               ],
 
     // prettier-ignore
-    capitalCities: [{name: "Tokyo", selected: false,}, {name: "Paris", selected: false,}, {name: "London", selected: false,}, 
-                    {name: "Kuala Lumpur", selected: false,}, {name: "Berlin", selected: false,}, {name: "Ottawa", selected: false,}, 
-                    {name: "Canberra", selected: false,}, {name: "Moscow", selected: false,}, {name: "Beijing", selected: false,}, 
-                    {name: "New Delhi", selected: false,}, {name: "Copenhagen", selected: false,}, {name: "Cairo", selected: false,}, 
-                    {name: "Madrid", selected: false,}, {name: "Rome", selected: false,}, {name: "Buenos Aires", selected: false,}, 
-                    {name: "Bangkok", selected: false,}, {name: "Vienna", selected: false,}, {name: "Seoul", selected: false,}, 
-                    {name: "Jakarta", selected: false,}, {name: "Lisbon", selected: false,}, {name: "Riyadh", selected: false,}, 
-                    {name: "Helsinki", selected: false,}, {name: "Oslo", selected: false,}, {name: "Stockholm", selected: false,}, 
-                    {name: "Athens", selected: false,}, {name: "Dublin", selected: false,}, {name: "Prague", selected: false,}, 
-                    {name: "Budapest", selected: false,}, {name: "Warsaw", selected: false,}, {name: "Amsterdam", selected: false,}, 
-                  ],
-
-    // prettier-ignore
     animals: [{name: "Elephant", selected: false,}, {name: "Lion", selected: false,}, {name: "Giraffe", selected: false,}, {name: "Penguin", selected: false,}, 
               {name: "Dolphin", selected: false,}, {name: "Tiger", selected: false,}, {name: "Kangaroo", selected: false,}, {name: "Panda", selected: false,}, 
               {name: "Zebra", selected: false,}, {name: "Polar Bear", selected: false,}, {name: "Cheetah", selected: false,}, {name: "Rhino", selected: false,}, 
@@ -68,30 +55,6 @@ function App() {
               {name: "Owl", selected: false,}, {name: "Frog", selected: false,}, {name: "Shark", selected: false,}, {name: "Octopus", selected: false,}, 
               {name: "Turtle", selected: false,}, {name: "Snake", selected: false,}, 
              ],
-
-    //  prettier-ignore
-    sports: [{name: "Soccer", selected: false,}, {name: "Basketball", selected: false,}, {name: "Tennis", selected: false,}, 
-             {name: "Baseball", selected: false,}, {name: "Rock Climbing", selected: false,}, {name: "Swimming", selected: false,}, 
-             {name: "Volleyball", selected: false,}, {name: "Table Tennis", selected: false,}, {name: "Badminton", selected: false,}, 
-             {name: "Rugby", selected: false,}, {name: "Cricket", selected: false,}, {name: "Hockey", selected: false,}, 
-             {name: "Boxing", selected: false,}, {name: "Martial Arts", selected: false,}, {name: "Fencing", selected: false,}, 
-             {name: "Archery", selected: false,}, {name: "Skiing", selected: false,}, {name: "Bobsleigh", selected: false,}, 
-             {name: "Cycling", selected: false,}, {name: "Curling", selected: false,}, {name: "Surfing", selected: false,}, 
-             {name: "Diving", selected: false,}, {name: "Gymnastics", selected: false,}, {name: "Athletics", selected: false,}, 
-             {name: "Rowing", selected: false,}, {name: "Sailing", selected: false,}, {name: "Canoeing", selected: false,}, 
-             {name: "Ice Hockey", selected: false,}, {name: "Triathlon", selected: false,}, {name: "American Football", selected: false,},
-            ],
-
-    // prettier-ignore
-    minecraft: [{name: "Creeper", selected: false,}, {name: "Steve", selected: false,}, {name: "Enderman", selected: false,}, {name: "Zombie", selected: false,}, 
-                {name: "Diamond", selected: false,}, {name: "Redstone", selected: false,}, {name: "Lush Cave", selected: false,}, {name: "Pickaxe", selected: false,}, 
-                {name: "Crafting Table", selected: false,}, {name: "Ender Dragon", selected: false,}, {name: "Nether", selected: false,}, {name: "Ghast", selected: false,}, 
-                {name: "Blaze", selected: false,}, {name: "Villager", selected: false,}, {name: "Ender Pearl", selected: false,}, {name: "Obsidian", selected: false,}, 
-                {name: "Enchantment Table", selected: false,}, {name: "Nether Portal", selected: false,}, {name: "Armadillo", selected: false,},  
-                {name: "Sniffer", selected: false,}, {name: "Trial Chamber", selected: false,}, {name: "Cherry Grove", selected: false,}, {name: "Vault", selected: false,}, 
-                {name: "Ominous bottle", selected: false,}, {name: "Woodland mansion", selected: false,}, {name: "Wind charge", selected: false,}, 
-                {name: "Fire aspect", selected: false,}, {name: "Orange terracotta", selected: false,}, {name: "Minecraft", selected: false,}, 
-              ],
   };
 
   const randomNum = (min, max) =>
@@ -166,44 +129,54 @@ function App() {
       ].name.toUpperCase();
   }
 
-  // const sara = "sara"
-  //   .replace(/([a-z])([A-Z])/g, "$1 $2")
-  //   .toLowerCase();
-
-  // const sara1 = sara.replace(/([a-z])([A-Z])/g, "$1 $2").toLowerCase();
-
-  // console.log(sara);
-
   return (
     <>
       <nav>
         <p className="heading">Hangman. Do (or) Die</p>
         <p className="wrong-guesses">Guessed wrong: {wrongGuess}</p>
-        <button className="btn category-btn" onClick={() => setPlay(false)}>
-          Change category
+        <button
+          className="btn category-btn"
+          onClick={() => {
+            setPlay(false);
+            reset();
+          }}
+        >
+          Change Category
         </button>
       </nav>
 
       {!play && (
         <div className="overlay">
           <h2>Chose Category:</h2>
-          {propertyNames.map((propertyName) => (
-            <button
-              className="btn category-btn"
-              onClick={() => {
-                category.current = propertyName;
-                wordToGuess.current =
-                  information[category.current][
-                    randomNum(0, information[category.current].length)
-                  ].name.toUpperCase();
-              }}
-            >
-              {" "}
-              {propertyName
-                .replace(/([a-z])([A-Z])/g, "$1 $2")
-                .toUpperCase()}{" "}
-            </button>
-          ))}
+
+          <div className="category-container">
+            {propertyNames.map((propertyName, index) => (
+              <button
+                key={index}
+                className={`btn category-btn 
+                  ${category.current === propertyName ? "active-category" : ""}
+                  `}
+                onClick={(e) => {
+                  category.current = propertyName;
+                  wordToGuess.current =
+                    information[category.current][
+                      randomNum(0, information[category.current].length)
+                    ].name.toUpperCase();
+                  document
+                    .querySelectorAll(".category-btn")
+                    .forEach((btn) => btn.classList.remove("active-category"));
+                  e.target.classList.contains("category-btn")
+                    ? e.target.classList.add("active-category")
+                    : e.target;
+                }}
+              >
+                {" "}
+                {propertyName
+                  .replace(/([a-z])([A-Z])/g, "$1 $2")
+                  .toUpperCase()}{" "}
+              </button>
+            ))}
+          </div>
 
           <button className="btn category-btn" onClick={() => setPlay(true)}>
             Play
