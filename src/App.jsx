@@ -115,8 +115,10 @@ function App() {
     ].name.toUpperCase()
   );
 
+  const [play, setPlay] = useState(false);
+
   const [wrongGuess, setWrongGuess] = useState(0);
-  const [word, setWord] = useState(wordToGuess);
+  // const [word, setWord] = useState(wordToGuess);
   const [guessedLetters, setGuessedLetters] = useState([]);
 
   function changeBtnState(letter) {
@@ -131,7 +133,7 @@ function App() {
 
   function handleGuess(letter) {
     changeBtnState(letter);
-    if (word.current.includes(letter)) {
+    if (wordToGuess.current.includes(letter)) {
       setGuessedLetters((prev) => {
         return [...prev, letter];
       });
@@ -141,7 +143,9 @@ function App() {
   }
 
   const unique = [
-    ...new Set(word.current.split("").filter((letter) => letter !== " ")),
+    ...new Set(
+      wordToGuess.current.split("").filter((letter) => letter !== " ")
+    ),
   ];
 
   const win = unique.every((letter) => guessedLetters.includes(letter));
@@ -158,7 +162,7 @@ function App() {
     });
     wordToGuess.current =
       information.movies[
-        randomNum(0, information.movies.length)
+        randomNum(0, information[category].length)
       ].name.toUpperCase();
   }
 
@@ -176,16 +180,36 @@ function App() {
         <p className="heading">Hangman. Do (or) Die</p>
         <p className="wrong-guesses">Guessed wrong: {wrongGuess}</p>
       </nav>
-      <main>
-        <div>
-          {/* {propertyNames.map((propertyName) => (
-            <button className="btn">
+
+      {!play && (
+        <div className="overlay">
+          <h2>Chose Category:</h2>
+          {propertyNames.map((propertyName) => (
+            <button
+              className="btn category-btn"
+              onClick={() => {
+                setCategory(propertyName);
+                wordToGuess.current =
+                  information[category][
+                    randomNum(0, information[category].length)
+                  ].name.toUpperCase();
+              }}
+            >
               {" "}
               {propertyName
                 .replace(/([a-z])([A-Z])/g, "$1 $2")
                 .toUpperCase()}{" "}
             </button>
-          ))} */}
+          ))}
+
+          <button className="btn category-btn" onClick={() => setPlay(true)}>
+            Play
+          </button>
+        </div>
+      )}
+
+      <main>
+        <div>
           <img className="image" src={`./${wrongGuess}wrongGuess.jpeg`} />
 
           <p className="text">Guess the movie:</p>
@@ -194,7 +218,7 @@ function App() {
           {!gameOver && (
             <p className="word">
               {" "}
-              {word.current
+              {wordToGuess.current
                 .split("")
                 .filter((letter) => letter !== "'")
                 .map((letter) => {
