@@ -36,7 +36,17 @@ nav {
 
 .image {
   height: 200px;
+
+  transition: all 0.5s ease-in;
+
+  /* opacity: 0;
+    pointer-events: none;
+    visibility: hidden; */
+
   opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transform: translate(0);
 }
 
 .text {
@@ -98,11 +108,11 @@ nav {
 .clicked .word-text {
   color: white;
   display: inline-block;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.3s ease, opacity 0.5s ease;
 }
 
 .clicked.clicked .word-text {
-  transform: rotate(-90deg) translateX(-15px);
+  transform: translateY(15px) rotate(-95deg);
   opacity: 0.5;
 }
 
@@ -157,4 +167,22 @@ nav {
   cursor: auto;
   box-shadow: 0 0 10px rgb(255, 17, 0.6);
   pointer-events: none;
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.guessed-letter {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  animation: slideInFromTop 0.4s ease;
 }

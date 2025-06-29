@@ -199,7 +199,11 @@ function App() {
                 .filter((letter) => letter !== "'")
                 .map((letter) => {
                   if (letter !== " ") {
-                    return guessedLetters.includes(letter) ? letter : "_";
+                    return guessedLetters.includes(letter) ? (
+                      <p className="guessed-letter">{letter}</p>
+                    ) : (
+                      "_"
+                    );
                   } else return " ";
                 })}{" "}
             </p>
