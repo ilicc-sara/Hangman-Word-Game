@@ -19,8 +19,7 @@ function Button(props) {
       disabled={isClicked}
       onClick={() => handleClick(letter)}
     >
-      {" "}
-      {letter}{" "}
+      <span className="word-text">{letter} </span>
     </button>
   );
 }

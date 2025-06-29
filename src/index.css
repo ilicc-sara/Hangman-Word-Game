@@ -89,6 +89,23 @@ nav {
   pointer-events: none;
 }
 
+.word-text {
+  font-size: 28px;
+  font-weight: 700;
+  color: rgb(23, 27, 25);
+}
+
+.clicked .word-text {
+  color: white;
+  display: inline-block;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.clicked.clicked .word-text {
+  transform: rotate(-90deg) translateX(-15px);
+  opacity: 0.5;
+}
+
 .reset-btn {
   margin: 10px auto;
   padding-left: 15px;
@@ -136,6 +153,8 @@ nav {
 }
 
 .active-category {
-  background-color: #f10;
+  background-color: rgb(255, 17, 0);
+  cursor: auto;
+  box-shadow: 0 0 10px rgb(255, 17, 0.6);
   pointer-events: none;
 }
