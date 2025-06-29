@@ -103,14 +103,14 @@ function App() {
 
   const [information, setInformation] = useState(info);
 
-  // console.log(Object.getOwnPropertyNames(information));
-
   const propertyNames = Object.getOwnPropertyNames(information);
 
   const [alphabet, setAlphabet] = useState(alfabet);
-  const [category, setCategory] = useState(propertyNames[0]);
+
+  const category = useRef(propertyNames[0]);
+
   const wordToGuess = useRef(
-    information[category][
+    information[category.current][
       randomNum(0, information.movies.length)
     ].name.toUpperCase()
   );
@@ -118,7 +118,7 @@ function App() {
   const [play, setPlay] = useState(false);
 
   const [wrongGuess, setWrongGuess] = useState(0);
-  // const [word, setWord] = useState(wordToGuess);
+  const [word, setWord] = useState(wordToGuess);
   const [guessedLetters, setGuessedLetters] = useState([]);
 
   function changeBtnState(letter) {
@@ -162,11 +162,11 @@ function App() {
     });
     wordToGuess.current =
       information.movies[
-        randomNum(0, information[category].length)
+        randomNum(0, information[category.current].length)
       ].name.toUpperCase();
   }
 
-  // const sara = "jaSamMalaCiganka"
+  // const sara = "sara"
   //   .replace(/([a-z])([A-Z])/g, "$1 $2")
   //   .toLowerCase();
 
@@ -179,6 +179,9 @@ function App() {
       <nav>
         <p className="heading">Hangman. Do (or) Die</p>
         <p className="wrong-guesses">Guessed wrong: {wrongGuess}</p>
+        <button className="btn category-btn" onClick={() => setPlay(false)}>
+          Change category
+        </button>
       </nav>
 
       {!play && (
@@ -188,10 +191,10 @@ function App() {
             <button
               className="btn category-btn"
               onClick={() => {
-                setCategory(propertyName);
+                category.current = propertyName;
                 wordToGuess.current =
-                  information[category][
-                    randomNum(0, information[category].length)
+                  information[category.current][
+                    randomNum(0, information[category.current].length)
                   ].name.toUpperCase();
               }}
             >
