@@ -114,7 +114,7 @@ function App() {
 
   const win = unique.every((letter) => guessedLetters.includes(letter));
 
-  const gameOver = wrongGuess === 6 || win;
+  let gameOver = wrongGuess === 6 || win;
 
   function reset() {
     setPlay(false);
@@ -132,12 +132,12 @@ function App() {
   }
 
   const timerFunction = function () {
-    let time = 14;
+    let time = 60;
 
     const tick = function () {
       time--;
 
-      let timeString = String(time);
+      let timeString = String(time).padStart(2, 0);
       setTime(timeString);
 
       console.log(time);
@@ -156,6 +156,11 @@ function App() {
       <nav>
         <p className="heading">Hangman. Do (or) Die</p>
         <p className="wrong-guesses">Guessed wrong: {wrongGuess}</p>
+        {mode === "difficult" && !gameOver ? (
+          <p className="timer-text"> Time left: 00:{time} </p>
+        ) : (
+          ""
+        )}
         <button
           className="btn category-btn"
           onClick={() => {
@@ -168,7 +173,7 @@ function App() {
       </nav>
 
       {!play && (
-        <div className="overlay" onClick={() => timerFunction()}>
+        <div className="overlay">
           <h2>Chose Mode:</h2>
 
           <div className="mode-container">
@@ -221,7 +226,15 @@ function App() {
             ))}
           </div>
 
-          <button className="btn category-btn" onClick={() => setPlay(true)}>
+          <button
+            className="btn category-btn"
+            onClick={() => {
+              if (mode === "difficult") {
+                timerFunction();
+              }
+              setPlay(true);
+            }}
+          >
             Play
           </button>
         </div>
