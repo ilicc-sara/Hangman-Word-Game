@@ -156,18 +156,21 @@ nav {
   padding: 0 40%;
 }
 
-.category-btn {
+.category-btn,
+.mode-btn {
   background-color: yellow;
   height: 50px;
   font-size: 20px;
   width: 200px;
 }
 
-.category-btn:hover {
+.category-btn:hover,
+.mode-btn:hover {
   background-color: yellowgreen;
 }
 
-.active-category {
+.active-category,
+.active-mode {
   background-color: rgb(255, 17, 0);
   cursor: auto;
   box-shadow: 0 0 10px rgb(255, 17, 0.6);
