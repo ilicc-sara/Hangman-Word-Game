@@ -11,11 +11,11 @@ function App() {
              {name: "Avatar", selected: false,}, {name: "Jaws", selected: false,}, {name: "Frozen", selected: false,},
              {name: "The Matrix", selected: false, }, {name: "Goodfellas", selected: false,}, {name: "Braveheart", selected: false,},
              {name: "Fight Club", selected: false,}, {name: "Pulp Fiction", selected: false,}, {name: "Forrest Gump", selected: false,}, 
-             {name: "The Lion King", selected: false,}, {name: "Back to the Future", selected: false,}, {name: "Jurassic Park", selected: false,}, 
+             {name: "The Lion King", selected: false,}, {name: "Back to the Future", selected: false,},  
              {name: "Blade Runner", selected: false,}, {name: "Star Wars", selected: false,}, {name: "The Dark Knight", selected: false,}, 
              {name: "The Big Lebowski", selected: false,}, {name: "The Wizard of Oz", selected: false,},  
-             {name: "Toy Story", selected: false,}, {name: "The Silence of the Lambs", selected: false,}, {name: "Alien", selected: false,}, 
-             {name: "Interstellar", selected: false,}, {name: "Raiders of the Lost Ark", selected: false,}, {name: "La La Land", selected: false,}, 
+             {name: "Toy Story", selected: false,}, {name: "Alien", selected: false,}, 
+             {name: "Interstellar", selected: false,}, {name: "La La Land", selected: false,}, 
             ],
 
     // prettier-ignore
@@ -23,13 +23,13 @@ function App() {
               {name: "Stranger Things", selected: false,}, {name: "Bridgertons", selected: false,}, {name: "The Sopranos", selected: false,}, 
               {name: "Friends", selected: false,}, {name: "The Office", selected: false,}, {name: "Sherlock", selected: false,}, 
               {name: "Black Mirror", selected: false,}, {name: "The Crown", selected: false,}, {name: "Westworld", selected: false,}, 
-              {name: "Better Call Saul", selected: false,}, {name: "Orange Is the New Black", selected: false,}, {name: "The Simpsons", selected: false,}, 
+              {name: "Better Call Saul", selected: false,}, {name: "The Simpsons", selected: false,}, 
               {name: "Arrested Development", selected: false,}, {name: "Succession", selected: false,}, {name: "Fargo", selected: false,}, 
               {name: "Mad Men", selected: false,}, {name: "The West Wing", selected: false,}, {name: "Dexter", selected: false,}, 
               {name: "Rick and Morty", selected: false,}, {name: "Lost", selected: false,}, {name: "Doctor Who", selected: false,}, 
               {name: "The Walking Dead", selected: false,}, {name: "Peaky Blinders", selected: false,}, 
               {name: "Buffy the Vampire Slayer", selected: false,}, {name: "The Big Bang Theory", selected: false,}, 
-              {name: "Curb Your Enthusiasm", selected: false,}, {name: "Ted Lasso", selected: false,}, {name: "True Detective", selected: false,}, 
+              {name: "Ted Lasso", selected: false,}, {name: "True Detective", selected: false,}, 
              ],
 
     // prettier-ignore
@@ -46,13 +46,13 @@ function App() {
               ],
 
     // prettier-ignore
-    animals: [{name: "Elephant", selected: false,}, {name: "Lion", selected: false,}, {name: "Giraffe", selected: false,}, {name: "Penguin", selected: false,}, 
+    animals: [{name: "Elephant", selected: false,}, {name: "Lion", selected: false,}, {name: "Penguin", selected: false,}, 
               {name: "Dolphin", selected: false,}, {name: "Tiger", selected: false,}, {name: "Kangaroo", selected: false,}, {name: "Panda", selected: false,}, 
-              {name: "Zebra", selected: false,}, {name: "Polar Bear", selected: false,}, {name: "Cheetah", selected: false,}, {name: "Rhino", selected: false,}, 
-              {name: "Buffalo", selected: false,}, {name: "Koala", selected: false,}, {name: "Gorilla", selected: false,}, {name: "Chimpanzee", selected: false,}, 
+              {name: "Zebra", selected: false,}, {name: "Polar Bear", selected: false,}, {name: "Cheetah", selected: false,}, 
+              {name: "Buffalo", selected: false,}, {name: "Koala", selected: false,}, {name: "Gorilla", selected: false,}, 
               {name: "Crocodile", selected: false,}, {name: "Flamingo", selected: false,}, {name: "Peacock", selected: false,}, {name: "Jaguar", selected: false,}, 
               {name: "Leopard", selected: false,}, {name: "Wolf", selected: false,}, {name: "Fox", selected: false,}, {name: "Bald Eagle", selected: false,}, 
-              {name: "Owl", selected: false,}, {name: "Frog", selected: false,}, {name: "Shark", selected: false,}, {name: "Octopus", selected: false,}, 
+              {name: "Owl", selected: false,}, {name: "Frog", selected: false,}, {name: "Octopus", selected: false,}, 
               {name: "Turtle", selected: false,}, {name: "Snake", selected: false,}, 
              ],
   };
@@ -72,6 +72,8 @@ function App() {
 
   const category = useRef(propertyNames[0]);
 
+  const [mode, setMode] = useState("easy");
+
   const wordToGuess = useRef(
     information[category.current][
       randomNum(0, information.movies.length)
@@ -79,9 +81,7 @@ function App() {
   );
 
   const [play, setPlay] = useState(false);
-
   const [wrongGuess, setWrongGuess] = useState(0);
-  const [word, setWord] = useState(wordToGuess);
   const [guessedLetters, setGuessedLetters] = useState([]);
 
   function changeBtnState(letter) {
@@ -148,6 +148,29 @@ function App() {
 
       {!play && (
         <div className="overlay">
+          <h2>Chose Mode:</h2>
+
+          <div className="mode-container">
+            <button
+              className={`btn category-btn ${
+                mode === "easy" ? "active-category" : ""
+              } `}
+              onClick={() => {
+                setMode("easy");
+              }}
+            >
+              Easy
+            </button>
+            <button
+              className={`btn category-btn ${
+                mode !== "easy" ? "active-category" : ""
+              }`}
+              onClick={() => setMode("difficult")}
+            >
+              Difficult
+            </button>
+          </div>
+
           <h2>Chose Category:</h2>
 
           <div className="category-container">
@@ -223,20 +246,12 @@ function App() {
               <Button
                 key={index}
                 variation={"letterBtn"}
-                // className={"letter-btn btn"}
                 letter={letter.letter}
                 isClicked={letter.isClicked}
                 handleClick={() => {
                   handleGuess(letter.letter);
                 }}
               />
-              // <button
-              //   className="btn letter-btn"
-              //   onClick={() => handleGuess(letter.letter)}
-              // >
-              //   {" "}
-              //   {letter.letter}{" "}
-              // </button>
             ))}
           </div>
         )}
