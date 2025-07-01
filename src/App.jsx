@@ -3,20 +3,21 @@ import "./App.css";
 import Button from "./Button";
 import { createWebSocketModuleRunnerTransport } from "vite/module-runner";
 import CategoryBtn from "./CategoryBtn";
+import ModeBtn from "./ModeBtn";
 
 function App() {
   const info = {
     // prettier-ignore
-    movies: ["The Godfather","Titanic","Inception","Gladiator","Casablanca","Psycho","Avatar","Jaws","Frozen",],
+    movie: ["The Godfather","Titanic","Inception","Gladiator","Casablanca","Psycho","Avatar","Jaws","Frozen",],
 
     // prettier-ignore
-    tvShows: ["Breaking Bad","South Park","Game of Thrones","Bridgertons","The Sopranos","Friends","The Office","Sherlock","Black Mirror","The Crown","Westworld",],
+    tvShow: ["Breaking Bad","South Park","Game of Thrones","Bridgertons","The Sopranos","Friends","The Office","Sherlock","Black Mirror","The Crown","Westworld",],
 
     // prettier-ignore
-    countries: ["Australia","Brazil","Canada","Egypt","France","Germany","Hungary","India",],
+    country: ["Australia","Brazil","Canada","Egypt","France","Germany","Hungary","India",],
 
     // prettier-ignore
-    animals: ["Elephant","Lion","Penguin","Dolphin","Tiger","Panda","Zebra","Polar Bear",],
+    animal: ["Elephant","Lion","Penguin","Dolphin","Tiger","Panda","Zebra","Polar Bear",],
   };
 
   const randomNum = (min, max) =>
@@ -37,11 +38,12 @@ function App() {
 
   const [mode, setMode] = useState("easy");
 
-  const wordToGuess = useRef(
+  const generateWordToGuess =
     information[category.current][
-      randomNum(0, information.movies.length)
-    ].toUpperCase()
-  );
+      randomNum(0, information.movie.length)
+    ].toUpperCase();
+
+  const wordToGuess = useRef(generateWordToGuess);
 
   const [play, setPlay] = useState(false);
   const [wrongGuess, setWrongGuess] = useState(0);
@@ -65,16 +67,6 @@ function App() {
   const win = unique.every((letter) => guessedLetters.includes(letter));
 
   let gameOver = wrongGuess === 6 || win;
-
-  function reset() {
-    setPlay(false);
-    setWrongGuess(0);
-    setGuessedLetters([]);
-    wordToGuess.current =
-      information.movies[
-        randomNum(0, information[category.current].length)
-      ].toUpperCase();
-  }
 
   ///////////////////////////////////////////////////////////////////////
   // Timer Functioin
@@ -100,6 +92,19 @@ function App() {
   };
   ///////////////////////////////////////////////////////////////////////
 
+  function reset() {
+    setPlay(false);
+    setWrongGuess(0);
+    setGuessedLetters([]);
+    wordToGuess.current =
+      information.movie[
+        randomNum(0, information[category.current].length)
+      ].toUpperCase();
+    if (mode === "hard") {
+      clearInterval(timer);
+    }
+  }
+
   function handleChangeCategory(propertyName) {
     category.current = propertyName;
     wordToGuess.current =
@@ -107,25 +112,41 @@ function App() {
         randomNum(0, information[category.current].length)
       ].toUpperCase();
 
-    console.log(category.current);
+    setActiveCategory(propertyName);
   }
+
+  function displaySettingCategory() {
+    setPlay(false);
+    reset();
+  }
+
+  const getGameOverDisplayMessage = () => `YOU ${win ? "WON" : "LOST"}...`;
+
+  function startGame() {
+    if (mode === "hard") {
+      timerFunction();
+    }
+    setPlay(true);
+  }
+
+  function displayTimer() {} // 141
+  function generateHiddenLetter(letter) {} // 197
 
   return (
     <>
       <nav>
         <p className="heading">Hangman. Do (or) Die</p>
         <p className="wrong-guesses">Guessed wrong: {wrongGuess}</p>
-        {mode === "difficult" && !gameOver ? (
+
+        {mode === "hard" && !gameOver ? (
           <p className="timer-text"> Time left: 00:{time} </p>
         ) : (
           ""
         )}
+
         <button
           className="btn category-btn"
-          onClick={() => {
-            setPlay(false);
-            reset();
-          }}
+          onClick={() => displaySettingCategory()}
         >
           Change Category
         </button>
@@ -136,22 +157,8 @@ function App() {
           <h2>Chose Mode:</h2>
 
           <div className="mode-container">
-            <button
-              className={`btn mode-btn ${
-                mode === "easy" ? "active-mode" : ""
-              } `}
-              onClick={() => {
-                setMode("easy");
-              }}
-            >
-              Easy
-            </button>
-            <button
-              className={`btn mode-btn ${mode !== "easy" ? "active-mode" : ""}`}
-              onClick={() => setMode("difficult")}
-            >
-              Difficult
-            </button>
+            <ModeBtn mode={mode} setMode={setMode} name={"easy"} />
+            <ModeBtn mode={mode} setMode={setMode} name={"hard"} />
           </div>
 
           <h2>Chose Category:</h2>
@@ -164,21 +171,11 @@ function App() {
                 category={category.current}
                 wordToGuess={wordToGuess.current}
                 handleClick={handleChangeCategory}
-                activeCategory={activeCategory}
-                setActiveCategory={setActiveCategory}
               />
             ))}
           </div>
 
-          <button
-            className="btn category-btn"
-            onClick={() => {
-              if (mode === "difficult") {
-                timerFunction();
-              }
-              setPlay(true);
-            }}
-          >
+          <button className="btn category-btn" onClick={() => startGame()}>
             Play
           </button>
         </div>
@@ -188,10 +185,7 @@ function App() {
         <div>
           <img className="image" src={`./${wrongGuess}wrongGuess.jpeg`} />
 
-          <p className="text">{`Guess the ${category.current
-            .replace(/([a-z])([A-Z])/g, "$1 $2")
-            .toUpperCase()
-            .slice(0, -1)}:`}</p>
+          <p className="text">{`Guess the ${category.current.toUpperCase()}:`}</p>
 
           <p className="word"> {wordToGuess.current} </p>
           {/* {gameOver && <p className="word"> {wordToGuess.current} </p>} */}
@@ -210,11 +204,7 @@ function App() {
             </p>
           )}
           {gameOver && (
-            <p className="game-over-text">
-              {" "}
-              {/* get gameoverdisplaymessage */}
-              {`YOU ${win ? "WON" : "LOST"}...`}{" "}
-            </p>
+            <p className="game-over-text"> {getGameOverDisplayMessage()} </p>
           )}
         </div>
 

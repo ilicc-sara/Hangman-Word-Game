@@ -2,16 +2,13 @@ import React from "react";
 
 function CategoryBtn(props) {
   // prettier-ignore
-  const { category, propertyName, handleClick, activeCategory, setActiveCategory } = props;
+  const { category, propertyName, handleClick } = props;
   return (
     <button
       className={`btn category-btn 
-                  ${activeCategory === propertyName ? "active-category" : ""}
+                  ${category === propertyName ? "active-category" : ""}
                   `}
-      onClick={() => {
-        setActiveCategory(propertyName);
-        handleClick(propertyName);
-      }}
+      onClick={() => handleClick(propertyName)}
     >
       {" "}
       {propertyName.toUpperCase()}{" "}
