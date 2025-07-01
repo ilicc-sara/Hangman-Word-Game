@@ -1,7 +1,7 @@
 import React from "react";
 
 function Button(props) {
-  const { variation, letter, isClicked, handleClick } = props;
+  const { variation, letter, disabled, handleClick } = props;
 
   const baseClassName = "btn";
 
@@ -14,9 +14,9 @@ function Button(props) {
   return (
     <button
       className={`${baseClassName} ${modifierClassName} ${
-        isClicked ? "clicked" : ""
+        disabled ? "clicked" : ""
       }`}
-      disabled={isClicked}
+      disabled={disabled}
       onClick={() => handleClick(letter)}
     >
       <span className="word-text">{letter} </span>
