@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import Button from "./Button";
-import { createWebSocketModuleRunnerTransport } from "vite/module-runner";
 import CategoryBtn from "./CategoryBtn";
 import ModeBtn from "./ModeBtn";
 
@@ -49,15 +48,6 @@ function App() {
   const [wrongGuess, setWrongGuess] = useState(0);
   const [guessedLetters, setGuessedLetters] = useState([]);
 
-  function handleGuess(letter) {
-    if (!wordToGuess.current.includes(letter)) {
-      setWrongGuess((prev) => (prev !== 6 ? prev + 1 : prev - 6));
-    }
-    setGuessedLetters((prev) => {
-      return [...prev, letter];
-    });
-  }
-
   const unique = [
     ...new Set(
       wordToGuess.current.split("").filter((letter) => letter !== " ")
@@ -66,7 +56,17 @@ function App() {
 
   const win = unique.every((letter) => guessedLetters.includes(letter));
 
-  let gameOver = wrongGuess === 6 || win;
+  let checkGameOver = wrongGuess === 6 || win;
+  const [gameOver, setGameOver] = useState(checkGameOver);
+
+  function handleGuess(letter) {
+    if (!wordToGuess.current.includes(letter)) {
+      setWrongGuess((prev) => (prev !== 6 ? prev + 1 : prev - 6));
+    }
+    setGuessedLetters((prev) => {
+      return [...prev, letter];
+    });
+  }
 
   ///////////////////////////////////////////////////////////////////////
   // Timer Functioin
@@ -84,6 +84,7 @@ function App() {
 
       if (time === 0) {
         clearInterval(timer);
+        setGameOver(true);
       }
     };
 
