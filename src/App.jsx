@@ -31,7 +31,9 @@ function App() {
   const propertyNames = Object.getOwnPropertyNames(information);
   console.log(propertyNames);
 
-  const category = useRef(propertyNames[0]);
+  let category = useRef(propertyNames[0]);
+
+  const [activeCategory, setActiveCategory] = useState(category);
 
   const [mode, setMode] = useState("easy");
 
@@ -97,6 +99,17 @@ function App() {
     timer = setInterval(tick, 1000);
   };
   ///////////////////////////////////////////////////////////////////////
+
+  function handleChangeCategory(propertyName) {
+    category.current = propertyName;
+    wordToGuess.current =
+      information[category.current][
+        randomNum(0, information[category.current].length)
+      ].toUpperCase();
+
+    console.log(category.current);
+  }
+
   return (
     <>
       <nav>
@@ -145,7 +158,15 @@ function App() {
 
           <div className="category-container">
             {propertyNames.map((propertyName, index) => (
-              <CategoryBtn key={index}>{propertyName}</CategoryBtn>
+              <CategoryBtn
+                key={index}
+                propertyName={propertyName}
+                category={category.current}
+                wordToGuess={wordToGuess.current}
+                handleClick={handleChangeCategory}
+                activeCategory={activeCategory}
+                setActiveCategory={setActiveCategory}
+              />
             ))}
           </div>
 
