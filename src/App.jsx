@@ -3,6 +3,7 @@ import "./App.css";
 import Button from "./Button";
 import CategoryBtn from "./CategoryBtn";
 import ModeBtn from "./ModeBtn";
+import WordToGuess from "./WordToGuess";
 import { info } from "./data";
 
 function App() {
@@ -34,7 +35,6 @@ function App() {
     });
   }
 
-  // Timer Functioin
   const timer = useRef(null);
   const timerFunction = function () {
     let time1 = 60;
@@ -61,7 +61,6 @@ function App() {
   };
 
   const procesedWordToGuess = wordToGuess.split("");
-  // .filter((letter) => letter !== " ");
 
   function reset() {
     stopTimer();
@@ -142,22 +141,12 @@ function App() {
 
           <p className="text">{`Guess the ${category.toUpperCase()}:`}</p>
 
-          {/* <p className="word"> {wordToGuess} </p> */}
           {gameOver && <p className="word"> {wordToGuess} </p>}
           {!gameOver && (
-            <p className="word">
-              {procesedWordToGuess.map((letter, index) => {
-                if (letter !== " ") {
-                  return guessedLetters.includes(letter) ? (
-                    <span key={index} className="guessed-letter">
-                      {letter}
-                    </span>
-                  ) : (
-                    <span key={index}>_</span>
-                  );
-                } else return " ";
-              })}
-            </p>
+            <WordToGuess
+              procesedWordToGuess={procesedWordToGuess}
+              guessedLetters={guessedLetters}
+            />
           )}
           {gameOver && (
             <p className="game-over-text"> {getGameOverDisplayMessage()} </p>
