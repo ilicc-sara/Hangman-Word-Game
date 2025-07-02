@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./App.css";
 import CategoryBtn from "./CategoryBtn";
 import WordToGuess from "./WordToGuess";
@@ -14,6 +14,7 @@ function App() {
   const [wrongGuess, setWrongGuess] = useState(0);
   const [mode, setMode] = useState("easy");
   const [time, setTime] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -24,7 +25,7 @@ function App() {
     .filter((letter) => letter !== " ")
     .every((letter) => guessedLetters.includes(letter));
 
-  const gameOver = wrongGuess === 6 || win;
+  const gameOverLogic = wrongGuess === 6 || win;
 
   const randomNum = (min, max) =>
     Math.floor(Math.random() * (max - min + 1) + min);
@@ -36,6 +37,10 @@ function App() {
     setGuessedLetters((prev) => {
       return [...prev, letter];
     });
+
+    if (gameOverLogic) {
+      setGameOver(true);
+    }
   }
 
   const timer = useRef(null);
@@ -71,6 +76,7 @@ function App() {
     setWrongGuess(0);
     setGuessedLetters([]);
     setWordToGuess("");
+    setGameOver(false);
   }
 
   function handleChangeCategory(propertyName) {
