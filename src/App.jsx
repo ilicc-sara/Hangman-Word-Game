@@ -1,26 +1,29 @@
 import { useState, useRef } from "react";
 import "./App.css";
-import Button from "./Button";
 import CategoryBtn from "./CategoryBtn";
-import ModeBtn from "./ModeBtn";
 import WordToGuess from "./WordToGuess";
+import ModeBtn from "./ModeBtn";
+import Button from "./Button";
 import { info } from "./data";
 
 function App() {
-  const [time, setTime] = useState(0);
   const [information] = useState(info);
   const [category, setCategory] = useState("");
-  const [mode, setMode] = useState("easy");
   const [wordToGuess, setWordToGuess] = useState("");
-  const [wrongGuess, setWrongGuess] = useState(0);
   const [guessedLetters, setGuessedLetters] = useState([]);
+  const [wrongGuess, setWrongGuess] = useState(0);
+  const [mode, setMode] = useState("easy");
+  const [time, setTime] = useState(0);
 
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
   const propertyNames = Object.getOwnPropertyNames(information);
+
   const win = wordToGuess
     .split("")
     .filter((letter) => letter !== " ")
     .every((letter) => guessedLetters.includes(letter));
+
   const gameOver = wrongGuess === 6 || win;
 
   const randomNum = (min, max) =>
