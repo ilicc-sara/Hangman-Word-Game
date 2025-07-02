@@ -14,6 +14,7 @@ function ModeBtn(props) {
       className={`btn mode-btn ${modifierClassName}`}
       onClick={() => {
         setMode(name);
+        // handleClick();
       }}
     >
       {name.toUpperCase()}
