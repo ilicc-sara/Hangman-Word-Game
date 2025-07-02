@@ -35,7 +35,6 @@ function App() {
   }
 
   // Timer Functioin
-
   const timer = useRef(null);
   const timerFunction = function () {
     let time1 = 60;
@@ -48,14 +47,7 @@ function App() {
       console.log(timeString);
 
       if (time1 === 0) {
-        clearInterval(timer.current);
-      }
-
-      if (win) {
-        clearInterval(timer.current);
-      }
-
-      if (gameOver) {
+        setWrongGuess(6);
         clearInterval(timer.current);
       }
     };
@@ -72,6 +64,7 @@ function App() {
   // .filter((letter) => letter !== " ");
 
   function reset() {
+    stopTimer();
     setCategory("");
     setWrongGuess(0);
     setGuessedLetters([]);
@@ -149,8 +142,8 @@ function App() {
 
           <p className="text">{`Guess the ${category.toUpperCase()}:`}</p>
 
-          <p className="word"> {wordToGuess} </p>
-          {/* {gameOver && <p className="word"> {wordToGuess.current} </p>} */}
+          {/* <p className="word"> {wordToGuess} </p> */}
+          {gameOver && <p className="word"> {wordToGuess} </p>}
           {!gameOver && (
             <p className="word">
               {procesedWordToGuess.map((letter, index) => {
@@ -196,8 +189,3 @@ function App() {
 }
 
 export default App;
-// smanjiti app.jsx (podeliti na komponente)
-// smanjiti imperativno programiranje (funkcije)
-// alfabet ne mora biti stejt
-// umesto querySelectorAll za kategorije napraviti pojedinacnu komponentu sa svojim stejtom
-// clear interval
