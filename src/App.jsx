@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./App.css";
 import Button from "./Button";
 import CategoryBtn from "./CategoryBtn";
@@ -35,7 +35,8 @@ function App() {
   }
 
   // Timer Functioin
-  let timer = null;
+
+  const timer = useRef(null);
   const timerFunction = function () {
     let time1 = 60;
 
@@ -44,24 +45,27 @@ function App() {
 
       let timeString = String(time1).padStart(2, 0);
       setTime(timeString);
-
-      // console.log("timeString", timeString);
-      // console.log("stejt time", time);
-      // console.log("time unutar funkcije", time1);
+      console.log(timeString);
 
       if (time1 === 0) {
-        clearInterval(timer);
+        clearInterval(timer.current);
+      }
+
+      if (win) {
+        clearInterval(timer.current);
+      }
+
+      if (gameOver) {
+        clearInterval(timer.current);
       }
     };
 
     tick();
-    timer = setInterval(tick, 1000);
+    timer.current = setInterval(tick, 1000);
   };
-  // console.log("stejt time u global scope", time);
 
   const stopTimer = function () {
-    setTime(0);
-    clearInterval(timer);
+    clearInterval(timer.current);
   };
 
   const procesedWordToGuess = wordToGuess.split("");
@@ -75,7 +79,6 @@ function App() {
   }
 
   function handleChangeCategory(propertyName) {
-    stopTimer();
     setCategory(propertyName);
     const word =
       information[propertyName][
@@ -84,7 +87,6 @@ function App() {
     setWordToGuess(word);
 
     if (mode === "hard") {
-      stopTimer();
       timerFunction();
     }
   }
@@ -95,13 +97,6 @@ function App() {
   }
 
   const getGameOverDisplayMessage = () => `YOU ${win ? "WON" : "LOST"}...`;
-
-  // function displaySettingCategory() {
-  //   setPlay(false);
-  //   reset();
-  // }
-  // function displayTimer() {} // 141
-  // function generateHiddenLetter(letter) {} // 197
 
   return (
     <>
@@ -145,10 +140,6 @@ function App() {
               />
             ))}
           </div>
-
-          {/* <button className="btn category-btn" onClick={() => startGame()}>
-            Play
-          </button> */}
         </div>
       )}
 
