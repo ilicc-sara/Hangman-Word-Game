@@ -16,26 +16,22 @@ function App() {
   const [time, setTime] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
+  const MAX_GUESSES = 5;
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
   const propertyNames = Object.getOwnPropertyNames(information);
 
-  const win = wordToGuess
-    .split("")
-    .filter((letter) => letter !== " ")
-    .every((letter) => guessedLetters.includes(letter));
-
-  // const gameOverLogic = wrongGuess === 6 || win;
+  const win =
+    wordToGuess
+      .split("")
+      .filter((letter) => letter !== " ")
+      .every((letter) => guessedLetters.includes(letter)) && wordToGuess !== "";
 
   useEffect(() => {
     return () => {
-      if (wrongGuess === 5) setGameOver(true);
-      if (category && win) {
-        setGameOver(true);
-        // U OVOM SLUCAJU SE STEJT NE APDEJTUJE KADA IMAM SVA POGODJENA SLOVA, VEC TEK NAKON STO KLIKNEM JOS JEDNO DA BIH APDEJTOVALA STEJT
-      }
+      if (wrongGuess === MAX_GUESSES) setGameOver(true);
     };
-  }, [wrongGuess, category, win]);
+  }, [wrongGuess, MAX_GUESSES]);
   console.log("gameOverState", gameOver);
   console.log("win", win);
 
@@ -44,20 +40,14 @@ function App() {
 
   function handleGuess(letter) {
     if (!wordToGuess.includes(letter)) {
-      setWrongGuess((prev) => (prev !== 6 ? prev + 1 : prev - 6));
+      setWrongGuess((prev) => (prev !== MAX_GUESSES + 1 ? prev + 1 : 0));
     }
     setGuessedLetters((prev) => {
       return [...prev, letter];
     });
-
-    // if (wrongGuess === 5) {
-    //   setGameOver(true);
-    // }
-    // U OVOM SLUCAJU SVAKI PUT RAZLICITO POKAZE MAKSIMALAN BROJ GRESAKA
   }
 
   const timer = useRef(null);
-  // let timer = { current: null }; // KADA IMAM TIMER KAO VARIJABLU, CLEAR INTERVAL SE NE DESAVA VAN FUNKCIJE (LET VARIJABLA U REACTU)
   const timerFunction = function () {
     let time1 = 60;
 
@@ -69,7 +59,6 @@ function App() {
       console.log(timeString);
 
       if (time1 === 0) {
-        // setWrongGuess(6);
         setGameOver(true);
         clearInterval(timer.current);
       }
@@ -177,7 +166,7 @@ function App() {
           )}
         </div>
 
-        {!gameOver && (
+        {!gameOver && !win && (
           <div className="letter-buttons">
             {alphabet.map((letter, index) => (
               <Button
