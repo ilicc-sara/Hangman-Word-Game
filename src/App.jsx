@@ -25,7 +25,19 @@ function App() {
     .filter((letter) => letter !== " ")
     .every((letter) => guessedLetters.includes(letter));
 
-  const gameOverLogic = wrongGuess === 6 || win;
+  // const gameOverLogic = wrongGuess === 6 || win;
+
+  useEffect(() => {
+    return () => {
+      if (wrongGuess === 5) setGameOver(true);
+      if (category && win) {
+        setGameOver(true);
+        // U OVOM SLUCAJU SE STEJT NE APDEJTUJE KADA IMAM SVA POGODJENA SLOVA, VEC TEK NAKON STO KLIKNEM JOS JEDNO DA BIH APDEJTOVALA STEJT
+      }
+    };
+  }, [wrongGuess, category, win]);
+  console.log("gameOverState", gameOver);
+  console.log("win", win);
 
   const randomNum = (min, max) =>
     Math.floor(Math.random() * (max - min + 1) + min);
@@ -38,12 +50,14 @@ function App() {
       return [...prev, letter];
     });
 
-    if (gameOverLogic) {
-      setGameOver(true);
-    }
+    // if (wrongGuess === 5) {
+    //   setGameOver(true);
+    // }
+    // U OVOM SLUCAJU SVAKI PUT RAZLICITO POKAZE MAKSIMALAN BROJ GRESAKA
   }
 
   const timer = useRef(null);
+  // let timer = { current: null }; // KADA IMAM TIMER KAO VARIJABLU, CLEAR INTERVAL SE NE DESAVA VAN FUNKCIJE (LET VARIJABLA U REACTU)
   const timerFunction = function () {
     let time1 = 60;
 
@@ -55,7 +69,8 @@ function App() {
       console.log(timeString);
 
       if (time1 === 0) {
-        setWrongGuess(6);
+        // setWrongGuess(6);
+        setGameOver(true);
         clearInterval(timer.current);
       }
     };
@@ -72,11 +87,11 @@ function App() {
 
   function reset() {
     stopTimer();
+    setGameOver(false);
+    setWordToGuess("");
     setCategory("");
     setWrongGuess(0);
     setGuessedLetters([]);
-    setWordToGuess("");
-    setGameOver(false);
   }
 
   function handleChangeCategory(propertyName) {
@@ -100,7 +115,7 @@ function App() {
   const getGameOverDisplayMessage = () => `YOU ${win ? "WON" : "LOST"}...`;
 
   return (
-    <>
+    <div>
       <nav>
         <p className="heading">Hangman. Do (or) Die</p>
         <p className="wrong-guesses">Guessed wrong: {wrongGuess}</p>
@@ -182,7 +197,7 @@ function App() {
           Reset
         </button>
       </main>
-    </>
+    </div>
   );
 }
 
