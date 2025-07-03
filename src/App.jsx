@@ -150,7 +150,11 @@ function App() {
 
       <main>
         <div>
-          <img className="image" src={`./${wrongGuess}wrongGuess.jpeg`} />
+          <img
+            className="image"
+            src={`/assets/${wrongGuess}wrongGuess.jpeg`}
+            alt="wrong guess"
+          />
 
           <p className="text">{`Guess the ${category.toUpperCase()}:`}</p>
 
