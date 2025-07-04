@@ -4,6 +4,7 @@ import CategoryBtn from "./CategoryBtn";
 import WordToGuess from "./WordToGuess";
 import ModeBtn from "./ModeBtn";
 import Button from "./Button";
+import Image from "./Image";
 import { info } from "./data";
 
 function App() {
@@ -150,11 +151,7 @@ function App() {
 
       <main>
         <div>
-          <img
-            className="image"
-            src={`/assets/${wrongGuess}wrongGuess.jpeg`}
-            alt="wrong guess"
-          />
+          <Image wrongGuess={wrongGuess} />
 
           <p className="text">{`Guess the ${category.toUpperCase()}:`}</p>
 
