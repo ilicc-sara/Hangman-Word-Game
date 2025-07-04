@@ -33,8 +33,6 @@ function App() {
       if (wrongGuess === MAX_GUESSES) setGameOver(true);
     };
   }, [wrongGuess, MAX_GUESSES]);
-  console.log("gameOverState", gameOver);
-  console.log("win", win);
 
   const randomNum = (min, max) =>
     Math.floor(Math.random() * (max - min + 1) + min);
