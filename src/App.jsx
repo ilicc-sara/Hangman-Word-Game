@@ -132,7 +132,7 @@ function App() {
             <ModeBtn mode={mode} setMode={setMode} name={"hard"} />
           </div>
 
-          <h2>Chose Category:</h2>
+          <h2>Chose Category to start the game:</h2>
 
           <div className="category-container">
             {propertyNames.map((propertyName, index) => (
@@ -177,7 +177,6 @@ function App() {
                 key={index}
                 variation={"letterBtn"}
                 letter={letter}
-                isClicked={letter.isClicked}
                 disabled={guessedLetters.includes(letter)}
                 handleClick={() => {
                   handleGuess(letter);
