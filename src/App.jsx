@@ -48,7 +48,7 @@ function App() {
 
   const timer = useRef(null);
   const timerFunction = function () {
-    let time1 = 60;
+    let time1 = 31;
 
     const tick = function () {
       time1--;
