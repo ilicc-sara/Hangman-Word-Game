@@ -153,14 +153,14 @@ function App() {
 
           <p className="text">{`Guess the ${category.toUpperCase()}:`}</p>
 
-          {gameOver && <p className="word"> {wordToGuess} </p>}
-          {!gameOver && (
+          {(gameOver || win) && <p className="word"> {wordToGuess} </p>}
+          {!gameOver && !win && (
             <WordToGuess
               procesedWordToGuess={procesedWordToGuess}
               guessedLetters={guessedLetters}
             />
           )}
-          {gameOver && (
+          {(gameOver || win) && (
             <p className="game-over-text"> {getGameOverDisplayMessage()} </p>
           )}
         </div>
